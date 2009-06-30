@@ -52,6 +52,8 @@ Partial Class new_client
         Me.ClientBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.ClientBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.ChooseCarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Client_id_showLabel = New System.Windows.Forms.Label()
         Client_fnameLabel = New System.Windows.Forms.Label()
         Client_lnameLabel = New System.Windows.Forms.Label()
@@ -61,6 +63,7 @@ Partial Class new_client
         CType(Me.ClientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ClientBindingNavigator.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Client_id_showLabel
@@ -278,7 +281,7 @@ Partial Class new_client
         Me.ClientBindingNavigator.CountItem = Me.BindingNavigatorCountItem
         Me.ClientBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
         Me.ClientBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.ClientBindingNavigatorSaveItem})
-        Me.ClientBindingNavigator.Location = New System.Drawing.Point(0, 0)
+        Me.ClientBindingNavigator.Location = New System.Drawing.Point(0, 24)
         Me.ClientBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
         Me.ClientBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
         Me.ClientBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
@@ -299,6 +302,21 @@ Partial Class new_client
         Me.Button1.Text = "Back to client select"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChooseCarToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(380, 24)
+        Me.MenuStrip1.TabIndex = 12
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'ChooseCarToolStripMenuItem
+        '
+        Me.ChooseCarToolStripMenuItem.Name = "ChooseCarToolStripMenuItem"
+        Me.ChooseCarToolStripMenuItem.Size = New System.Drawing.Size(76, 20)
+        Me.ChooseCarToolStripMenuItem.Text = "choose car"
+        '
         'new_client
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -316,6 +334,8 @@ Partial Class new_client
         Me.Controls.Add(Client_emailLabel)
         Me.Controls.Add(Me.Client_emailTextBox)
         Me.Controls.Add(Me.ClientBindingNavigator)
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "new_client"
         Me.Text = "new_client"
         CType(Me.CarDealershipDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -323,6 +343,8 @@ Partial Class new_client
         CType(Me.ClientBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ClientBindingNavigator.ResumeLayout(False)
         Me.ClientBindingNavigator.PerformLayout()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -350,4 +372,6 @@ Partial Class new_client
     Friend WithEvents ClientBindingNavigatorSaveItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents ClientBindingNavigator As System.Windows.Forms.BindingNavigator
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents ChooseCarToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

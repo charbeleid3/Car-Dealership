@@ -1,13 +1,15 @@
-﻿Public Class choose_car
+﻿Imports System.Data.SqlClient
+
+Public Class choose_car
     Dim taxval As String
     Dim tax As String
     Dim total As String
-    Private Sub RECEIPTBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles RECEIPTBindingNavigatorSaveItem.Click
-        Me.Validate()
-        Me.RECEIPTBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.CarDealershipDataSet)
+    'Private Sub RECEIPTBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles RECEIPTBindingNavigatorSaveItem.Click
+    '    Me.Validate()
+    '    Me.RECEIPTBindingSource.EndEdit()
+    '    Me.TableAdapterManager.UpdateAll(Me.CarDealershipDataSet)
 
-    End Sub
+    'End Sub
 
     Private Sub choose_car_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -38,9 +40,36 @@
 
     End Sub
 
-    
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim myconnection As SqlConnection
+
+        Dim mycommand As SqlCommand
+
+        'Dim dr As SqlDataReader
+
+        'Dim dr1 As SqlDataReader
+
+        Dim ra As Integer
+
+
+
+
+        myconnection = New SqlConnection("Server=SAKR-PC; Database =CarDealership; Integrated Security = true")
+
+        'you need to provide password for sql server
+
+        myconnection.Open()
+
+        mycommand = New SqlCommand("INSERT INTO RECEIPT(client_id,model_id) values ('" & client_select.Client_IDTextBox.Text & "','" & Model_idTextBox.Text & "')", myconnection)
+
+        mycommand.ExecuteNonQuery()
+
+        MessageBox.Show("New Row Inserted" & ra)
+
+        myconnection.Close()
+
 
 
         taxval = 0.1
@@ -61,7 +90,14 @@
 
     End Sub
 
-    Private Sub RECEIPTBindingNavigator_RefreshItems(sender As Object, e As EventArgs) Handles RECEIPTBindingNavigator.RefreshItems
 
+    Private Sub ChooseClientToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChooseClientToolStripMenuItem.Click
+        Me.Hide()
+        client_select.Show()
+    End Sub
+
+    Private Sub ViewPurchasesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewPurchasesToolStripMenuItem.Click
+        Me.Hide()
+        Form2.Show()
     End Sub
 End Class

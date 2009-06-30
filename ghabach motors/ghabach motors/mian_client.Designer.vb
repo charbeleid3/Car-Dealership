@@ -27,6 +27,7 @@ Partial Class client_select
         Dim Client_lnameLabel As System.Windows.Forms.Label
         Dim Client_telLabel As System.Windows.Forms.Label
         Dim Client_emailLabel As System.Windows.Forms.Label
+        Dim Client_IDLabel As System.Windows.Forms.Label
         Me.CarDealershipDataSet = New ghabach_motors.CarDealershipDataSet()
         Me.ClientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ClientTableAdapter = New ghabach_motors.CarDealershipDataSetTableAdapters.ClientTableAdapter()
@@ -40,12 +41,18 @@ Partial Class client_select
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Client_IDTextBox = New System.Windows.Forms.TextBox()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.ChooseCarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewPurchasesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Client_fnameLabel = New System.Windows.Forms.Label()
         Client_lnameLabel = New System.Windows.Forms.Label()
         Client_telLabel = New System.Windows.Forms.Label()
         Client_emailLabel = New System.Windows.Forms.Label()
+        Client_IDLabel = New System.Windows.Forms.Label()
         CType(Me.CarDealershipDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Client_fnameLabel
@@ -87,6 +94,15 @@ Partial Class client_select
         Client_emailLabel.Size = New System.Drawing.Size(128, 26)
         Client_emailLabel.TabIndex = 7
         Client_emailLabel.Text = "client email:"
+        '
+        'Client_IDLabel
+        '
+        Client_IDLabel.AutoSize = True
+        Client_IDLabel.Location = New System.Drawing.Point(12, 62)
+        Client_IDLabel.Name = "Client_IDLabel"
+        Client_IDLabel.Size = New System.Drawing.Size(50, 13)
+        Client_IDLabel.TabIndex = 13
+        Client_IDLabel.Text = "Client ID:"
         '
         'CarDealershipDataSet
         '
@@ -192,11 +208,42 @@ Partial Class client_select
         Me.Button4.Text = "Choose"
         Me.Button4.UseVisualStyleBackColor = True
         '
+        'Client_IDTextBox
+        '
+        Me.Client_IDTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientBindingSource, "Client_ID", True))
+        Me.Client_IDTextBox.Location = New System.Drawing.Point(68, 59)
+        Me.Client_IDTextBox.Name = "Client_IDTextBox"
+        Me.Client_IDTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.Client_IDTextBox.TabIndex = 14
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChooseCarToolStripMenuItem, Me.ViewPurchasesToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(490, 24)
+        Me.MenuStrip1.TabIndex = 15
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'ChooseCarToolStripMenuItem
+        '
+        Me.ChooseCarToolStripMenuItem.Name = "ChooseCarToolStripMenuItem"
+        Me.ChooseCarToolStripMenuItem.Size = New System.Drawing.Size(76, 20)
+        Me.ChooseCarToolStripMenuItem.Text = "choose car"
+        '
+        'ViewPurchasesToolStripMenuItem
+        '
+        Me.ViewPurchasesToolStripMenuItem.Name = "ViewPurchasesToolStripMenuItem"
+        Me.ViewPurchasesToolStripMenuItem.Size = New System.Drawing.Size(100, 20)
+        Me.ViewPurchasesToolStripMenuItem.Text = "View purchases"
+        '
         'client_select
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(490, 386)
+        Me.ClientSize = New System.Drawing.Size(490, 394)
+        Me.Controls.Add(Client_IDLabel)
+        Me.Controls.Add(Me.Client_IDTextBox)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
@@ -210,10 +257,14 @@ Partial Class client_select
         Me.Controls.Add(Client_emailLabel)
         Me.Controls.Add(Me.Client_emailTextBox)
         Me.Controls.Add(Me.ClientComboBox)
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "client_select"
         Me.Text = "client select"
         CType(Me.CarDealershipDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ClientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -231,4 +282,8 @@ Partial Class client_select
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents Client_IDTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents ChooseCarToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ViewPurchasesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

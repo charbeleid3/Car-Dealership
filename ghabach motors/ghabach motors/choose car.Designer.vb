@@ -26,24 +26,13 @@ Partial Class choose_car
         Dim Brand_nameLabel As System.Windows.Forms.Label
         Dim Model_nameLabel As System.Windows.Forms.Label
         Dim Car_yearLabel1 As System.Windows.Forms.Label
+        Dim Model_idLabel As System.Windows.Forms.Label
+        Dim Client_id_showLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(choose_car))
         Me.CarDealershipDataSet = New ghabach_motors.CarDealershipDataSet()
         Me.RECEIPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.RECEIPTTableAdapter = New ghabach_motors.CarDealershipDataSetTableAdapters.RECEIPTTableAdapter()
         Me.TableAdapterManager = New ghabach_motors.CarDealershipDataSetTableAdapters.TableAdapterManager()
-        Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
-        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
-        Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
-        Me.RECEIPTBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
-        Me.RECEIPTBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.C_brandBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.C_brandTableAdapter = New ghabach_motors.CarDealershipDataSetTableAdapters.C_brandTableAdapter()
         Me.MODELBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -55,16 +44,25 @@ Partial Class choose_car
         Me.TxtReciept = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.PriceTextBox = New System.Windows.Forms.TextBox()
+        Me.ClientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ClientTableAdapter = New ghabach_motors.CarDealershipDataSetTableAdapters.ClientTableAdapter()
+        Me.Model_idTextBox = New System.Windows.Forms.TextBox()
+        Me.Client_id_showTextBox = New System.Windows.Forms.TextBox()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.ChooseClientToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewPurchasesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Brand_nameLabel = New System.Windows.Forms.Label()
         Model_nameLabel = New System.Windows.Forms.Label()
         Car_yearLabel1 = New System.Windows.Forms.Label()
+        Model_idLabel = New System.Windows.Forms.Label()
+        Client_id_showLabel = New System.Windows.Forms.Label()
         CType(Me.CarDealershipDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RECEIPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RECEIPTBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RECEIPTBindingNavigator.SuspendLayout()
         CType(Me.C_brandBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MODELBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FKMODELCbrandBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ClientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Brand_nameLabel
@@ -76,7 +74,6 @@ Partial Class choose_car
         Brand_nameLabel.Size = New System.Drawing.Size(134, 26)
         Brand_nameLabel.TabIndex = 1
         Brand_nameLabel.Text = "brand name:"
-        AddHandler Brand_nameLabel.Click, AddressOf Me.Brand_nameLabel_Click
         '
         'Model_nameLabel
         '
@@ -87,7 +84,6 @@ Partial Class choose_car
         Model_nameLabel.Size = New System.Drawing.Size(139, 26)
         Model_nameLabel.TabIndex = 3
         Model_nameLabel.Text = "model name:"
-        AddHandler Model_nameLabel.Click, AddressOf Me.Model_nameLabel_Click
         '
         'Car_yearLabel1
         '
@@ -98,6 +94,26 @@ Partial Class choose_car
         Car_yearLabel1.Size = New System.Drawing.Size(96, 26)
         Car_yearLabel1.TabIndex = 6
         Car_yearLabel1.Text = "car year:"
+        '
+        'Model_idLabel
+        '
+        Model_idLabel.AutoSize = True
+        Model_idLabel.Location = New System.Drawing.Point(321, 86)
+        Model_idLabel.Name = "Model_idLabel"
+        Model_idLabel.Size = New System.Drawing.Size(49, 13)
+        Model_idLabel.TabIndex = 11
+        Model_idLabel.Text = "model id:"
+        Model_idLabel.Visible = False
+        '
+        'Client_id_showLabel
+        '
+        Client_id_showLabel.AutoSize = True
+        Client_id_showLabel.Location = New System.Drawing.Point(117, 89)
+        Client_id_showLabel.Name = "Client_id_showLabel"
+        Client_id_showLabel.Size = New System.Drawing.Size(74, 13)
+        Client_id_showLabel.TabIndex = 12
+        Client_id_showLabel.Text = "client id show:"
+        Client_id_showLabel.Visible = False
         '
         'CarDealershipDataSet
         '
@@ -123,117 +139,6 @@ Partial Class choose_car
         Me.TableAdapterManager.SUPPLIERTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = ghabach_motors.CarDealershipDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.usersTableAdapter = Nothing
-        '
-        'BindingNavigatorMoveFirstItem
-        '
-        Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
-        Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveFirstItem.Text = "Move first"
-        '
-        'BindingNavigatorMovePreviousItem
-        '
-        Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
-        Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMovePreviousItem.Text = "Move previous"
-        '
-        'BindingNavigatorSeparator
-        '
-        Me.BindingNavigatorSeparator.Name = "BindingNavigatorSeparator"
-        Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorPositionItem
-        '
-        Me.BindingNavigatorPositionItem.AccessibleName = "Position"
-        Me.BindingNavigatorPositionItem.AutoSize = False
-        Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
-        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
-        Me.BindingNavigatorPositionItem.Text = "0"
-        Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
-        '
-        'BindingNavigatorCountItem
-        '
-        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
-        Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
-        '
-        'BindingNavigatorSeparator1
-        '
-        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
-        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorMoveNextItem
-        '
-        Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
-        Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveNextItem.Text = "Move next"
-        '
-        'BindingNavigatorMoveLastItem
-        '
-        Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
-        Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveLastItem.Text = "Move last"
-        '
-        'BindingNavigatorSeparator2
-        '
-        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
-        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorAddNewItem
-        '
-        Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
-        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorAddNewItem.Text = "Add new"
-        '
-        'BindingNavigatorDeleteItem
-        '
-        Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
-        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorDeleteItem.Text = "Delete"
-        '
-        'RECEIPTBindingNavigatorSaveItem
-        '
-        Me.RECEIPTBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.RECEIPTBindingNavigatorSaveItem.Image = CType(resources.GetObject("RECEIPTBindingNavigatorSaveItem.Image"), System.Drawing.Image)
-        Me.RECEIPTBindingNavigatorSaveItem.Name = "RECEIPTBindingNavigatorSaveItem"
-        Me.RECEIPTBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
-        Me.RECEIPTBindingNavigatorSaveItem.Text = "Save Data"
-        '
-        'RECEIPTBindingNavigator
-        '
-        Me.RECEIPTBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
-        Me.RECEIPTBindingNavigator.BindingSource = Me.RECEIPTBindingSource
-        Me.RECEIPTBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-        Me.RECEIPTBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.RECEIPTBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.RECEIPTBindingNavigatorSaveItem})
-        Me.RECEIPTBindingNavigator.Location = New System.Drawing.Point(0, 0)
-        Me.RECEIPTBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
-        Me.RECEIPTBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
-        Me.RECEIPTBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
-        Me.RECEIPTBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
-        Me.RECEIPTBindingNavigator.Name = "RECEIPTBindingNavigator"
-        Me.RECEIPTBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.RECEIPTBindingNavigator.Size = New System.Drawing.Size(797, 25)
-        Me.RECEIPTBindingNavigator.TabIndex = 0
-        Me.RECEIPTBindingNavigator.Text = "BindingNavigator1"
         '
         'C_brandBindingSource
         '
@@ -289,6 +194,7 @@ Partial Class choose_car
         Me.Car_yearComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MODELBindingSource, "car_year", True))
         Me.Car_yearComboBox.DataSource = Me.MODELBindingSource
         Me.Car_yearComboBox.DisplayMember = "car_year"
+        Me.Car_yearComboBox.Enabled = False
         Me.Car_yearComboBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Car_yearComboBox.FormattingEnabled = True
         Me.Car_yearComboBox.Location = New System.Drawing.Point(243, 321)
@@ -319,10 +225,58 @@ Partial Class choose_car
         'PriceTextBox
         '
         Me.PriceTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FKMODELCbrandBindingSource, "price", True))
-        Me.PriceTextBox.Location = New System.Drawing.Point(89, 144)
+        Me.PriceTextBox.Location = New System.Drawing.Point(303, 365)
         Me.PriceTextBox.Name = "PriceTextBox"
         Me.PriceTextBox.Size = New System.Drawing.Size(100, 20)
         Me.PriceTextBox.TabIndex = 10
+        '
+        'ClientBindingSource
+        '
+        Me.ClientBindingSource.DataMember = "Client"
+        Me.ClientBindingSource.DataSource = Me.CarDealershipDataSet
+        '
+        'ClientTableAdapter
+        '
+        Me.ClientTableAdapter.ClearBeforeFill = True
+        '
+        'Model_idTextBox
+        '
+        Me.Model_idTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MODELBindingSource, "model_id", True))
+        Me.Model_idTextBox.Location = New System.Drawing.Point(376, 83)
+        Me.Model_idTextBox.Name = "Model_idTextBox"
+        Me.Model_idTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.Model_idTextBox.TabIndex = 12
+        Me.Model_idTextBox.Visible = False
+        '
+        'Client_id_showTextBox
+        '
+        Me.Client_id_showTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientBindingSource, "client_id_show", True))
+        Me.Client_id_showTextBox.Location = New System.Drawing.Point(197, 86)
+        Me.Client_id_showTextBox.Name = "Client_id_showTextBox"
+        Me.Client_id_showTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.Client_id_showTextBox.TabIndex = 13
+        Me.Client_id_showTextBox.Visible = False
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChooseClientToolStripMenuItem, Me.ViewPurchasesToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(797, 24)
+        Me.MenuStrip1.TabIndex = 14
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'ChooseClientToolStripMenuItem
+        '
+        Me.ChooseClientToolStripMenuItem.Name = "ChooseClientToolStripMenuItem"
+        Me.ChooseClientToolStripMenuItem.Size = New System.Drawing.Size(89, 20)
+        Me.ChooseClientToolStripMenuItem.Text = "choose client"
+        '
+        'ViewPurchasesToolStripMenuItem
+        '
+        Me.ViewPurchasesToolStripMenuItem.Name = "ViewPurchasesToolStripMenuItem"
+        Me.ViewPurchasesToolStripMenuItem.Size = New System.Drawing.Size(100, 20)
+        Me.ViewPurchasesToolStripMenuItem.Text = "View Purchases"
         '
         'choose_car
         '
@@ -330,7 +284,9 @@ Partial Class choose_car
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(797, 438)
+        Me.ClientSize = New System.Drawing.Size(797, 446)
+        Me.Controls.Add(Model_idLabel)
+        Me.Controls.Add(Me.Model_idTextBox)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TxtReciept)
         Me.Controls.Add(Car_yearLabel1)
@@ -339,18 +295,21 @@ Partial Class choose_car
         Me.Controls.Add(Me.Model_nameComboBox)
         Me.Controls.Add(Brand_nameLabel)
         Me.Controls.Add(Me.Brand_nameComboBox)
-        Me.Controls.Add(Me.RECEIPTBindingNavigator)
         Me.Controls.Add(Me.PriceTextBox)
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Client_id_showLabel)
+        Me.Controls.Add(Me.Client_id_showTextBox)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "choose_car"
         Me.Text = "choose_car"
         CType(Me.CarDealershipDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RECEIPTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RECEIPTBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RECEIPTBindingNavigator.ResumeLayout(False)
-        Me.RECEIPTBindingNavigator.PerformLayout()
         CType(Me.C_brandBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MODELBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FKMODELCbrandBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ClientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -359,19 +318,6 @@ Partial Class choose_car
     Friend WithEvents RECEIPTBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents RECEIPTTableAdapter As ghabach_motors.CarDealershipDataSetTableAdapters.RECEIPTTableAdapter
     Friend WithEvents TableAdapterManager As ghabach_motors.CarDealershipDataSetTableAdapters.TableAdapterManager
-    Friend WithEvents BindingNavigatorMoveFirstItem As System.Windows.Forms.ToolStripButton
-    Friend WithEvents BindingNavigatorMovePreviousItem As System.Windows.Forms.ToolStripButton
-    Friend WithEvents BindingNavigatorSeparator As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents BindingNavigatorPositionItem As System.Windows.Forms.ToolStripTextBox
-    Friend WithEvents BindingNavigatorCountItem As System.Windows.Forms.ToolStripLabel
-    Friend WithEvents BindingNavigatorSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents BindingNavigatorMoveNextItem As System.Windows.Forms.ToolStripButton
-    Friend WithEvents BindingNavigatorMoveLastItem As System.Windows.Forms.ToolStripButton
-    Friend WithEvents BindingNavigatorSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents BindingNavigatorAddNewItem As System.Windows.Forms.ToolStripButton
-    Friend WithEvents BindingNavigatorDeleteItem As System.Windows.Forms.ToolStripButton
-    Friend WithEvents RECEIPTBindingNavigatorSaveItem As System.Windows.Forms.ToolStripButton
-    Friend WithEvents RECEIPTBindingNavigator As System.Windows.Forms.BindingNavigator
     Friend WithEvents C_brandBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents C_brandTableAdapter As ghabach_motors.CarDealershipDataSetTableAdapters.C_brandTableAdapter
     Friend WithEvents MODELBindingSource As System.Windows.Forms.BindingSource
@@ -383,4 +329,11 @@ Partial Class choose_car
     Friend WithEvents TxtReciept As System.Windows.Forms.TextBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents PriceTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents ClientBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents ClientTableAdapter As ghabach_motors.CarDealershipDataSetTableAdapters.ClientTableAdapter
+    Friend WithEvents Model_idTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Client_id_showTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents ChooseClientToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ViewPurchasesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

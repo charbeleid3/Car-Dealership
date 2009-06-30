@@ -44,4 +44,14 @@
         choose_car.Show()
 
     End Sub
+
+    Private Sub ChooseCarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChooseCarToolStripMenuItem.Click
+        choose_car.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub ViewPurchasesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewPurchasesToolStripMenuItem.Click
+        Me.Hide()
+        Form2.Show()
+    End Sub
 End Class

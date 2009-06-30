@@ -8,16 +8,18 @@ c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motor
 c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motors\obj\Debug\ghabach motors.exe
 c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motors\obj\Debug\ghabach motors.xml
 c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motors\obj\Debug\ghabach motors.pdb
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.Log_IN.resources
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.Form2.resources
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.client_select.resources
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.Resources.resources
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.new_client.resources
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach motors.vbproj.GenerateResource.Cache
 C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\bin\Debug\ghabach motors.exe.config
-C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach motors.exe
-C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach motors.xml
-C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach motors.pdb
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.choose_car.resources
 C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\bin\Debug\ghabach motors.exe
 C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\bin\Debug\ghabach motors.pdb
 C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\bin\Debug\ghabach motors.xml
-C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.Resources.resources
-C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach motors.vbproj.GenerateResource.Cache
-C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.Log_IN.resources
-C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.client_select.resources
-C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.choose_car.resources
-C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.new_client.resources
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach motors.exe
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach motors.xml
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach motors.pdb
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach motors.vbprojResolveAssemblyReference.cache
