@@ -4,7 +4,7 @@ Imports System.Data.SqlTypes
 Imports System.Configuration
 Public Class Log_IN
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
 
 
 

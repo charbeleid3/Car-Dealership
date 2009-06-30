@@ -19,3 +19,5 @@ C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabac
 C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach motors.vbproj.GenerateResource.Cache
 C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.Log_IN.resources
 C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.client_select.resources
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.choose_car.resources
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.new_client.resources

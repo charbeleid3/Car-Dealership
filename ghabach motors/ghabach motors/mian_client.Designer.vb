@@ -39,6 +39,7 @@ Partial Class client_select
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Client_fnameLabel = New System.Windows.Forms.Label()
         Client_lnameLabel = New System.Windows.Forms.Label()
         Client_telLabel = New System.Windows.Forms.Label()
@@ -46,6 +47,46 @@ Partial Class client_select
         CType(Me.CarDealershipDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'Client_fnameLabel
+        '
+        Client_fnameLabel.AutoSize = True
+        Client_fnameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Client_fnameLabel.Location = New System.Drawing.Point(78, 77)
+        Client_fnameLabel.Name = "Client_fnameLabel"
+        Client_fnameLabel.Size = New System.Drawing.Size(136, 26)
+        Client_fnameLabel.TabIndex = 1
+        Client_fnameLabel.Text = "client fname:"
+        '
+        'Client_lnameLabel
+        '
+        Client_lnameLabel.AutoSize = True
+        Client_lnameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Client_lnameLabel.Location = New System.Drawing.Point(78, 115)
+        Client_lnameLabel.Name = "Client_lnameLabel"
+        Client_lnameLabel.Size = New System.Drawing.Size(135, 26)
+        Client_lnameLabel.TabIndex = 3
+        Client_lnameLabel.Text = "client lname:"
+        '
+        'Client_telLabel
+        '
+        Client_telLabel.AutoSize = True
+        Client_telLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Client_telLabel.Location = New System.Drawing.Point(78, 154)
+        Client_telLabel.Name = "Client_telLabel"
+        Client_telLabel.Size = New System.Drawing.Size(98, 26)
+        Client_telLabel.TabIndex = 5
+        Client_telLabel.Text = "client tel:"
+        '
+        'Client_emailLabel
+        '
+        Client_emailLabel.AutoSize = True
+        Client_emailLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Client_emailLabel.Location = New System.Drawing.Point(78, 191)
+        Client_emailLabel.Name = "Client_emailLabel"
+        Client_emailLabel.Size = New System.Drawing.Size(128, 26)
+        Client_emailLabel.TabIndex = 7
+        Client_emailLabel.Text = "client email:"
         '
         'CarDealershipDataSet
         '
@@ -64,7 +105,7 @@ Partial Class client_select
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.CARTableAdapter = Nothing
+        Me.TableAdapterManager.C_brandTableAdapter = Nothing
         Me.TableAdapterManager.ClientTableAdapter = Me.ClientTableAdapter
         Me.TableAdapterManager.MODELTableAdapter = Nothing
         Me.TableAdapterManager.RECEIPTTableAdapter = Nothing
@@ -83,77 +124,41 @@ Partial Class client_select
         Me.ClientComboBox.TabIndex = 1
         Me.ClientComboBox.ValueMember = "Client_ID"
         '
-        'Client_fnameLabel
-        '
-        Client_fnameLabel.AutoSize = True
-        Client_fnameLabel.Location = New System.Drawing.Point(102, 88)
-        Client_fnameLabel.Name = "Client_fnameLabel"
-        Client_fnameLabel.Size = New System.Drawing.Size(67, 13)
-        Client_fnameLabel.TabIndex = 1
-        Client_fnameLabel.Text = "client fname:"
-        '
         'Client_fnameTextBox
         '
         Me.Client_fnameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientBindingSource, "client_fname", True))
-        Me.Client_fnameTextBox.Location = New System.Drawing.Point(175, 85)
+        Me.Client_fnameTextBox.Location = New System.Drawing.Point(218, 83)
         Me.Client_fnameTextBox.Name = "Client_fnameTextBox"
-        Me.Client_fnameTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.Client_fnameTextBox.Size = New System.Drawing.Size(165, 20)
         Me.Client_fnameTextBox.TabIndex = 2
-        '
-        'Client_lnameLabel
-        '
-        Client_lnameLabel.AutoSize = True
-        Client_lnameLabel.Location = New System.Drawing.Point(102, 114)
-        Client_lnameLabel.Name = "Client_lnameLabel"
-        Client_lnameLabel.Size = New System.Drawing.Size(66, 13)
-        Client_lnameLabel.TabIndex = 3
-        Client_lnameLabel.Text = "client lname:"
         '
         'Client_lnameTextBox
         '
         Me.Client_lnameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientBindingSource, "client_lname", True))
-        Me.Client_lnameTextBox.Location = New System.Drawing.Point(175, 111)
+        Me.Client_lnameTextBox.Location = New System.Drawing.Point(219, 121)
         Me.Client_lnameTextBox.Name = "Client_lnameTextBox"
-        Me.Client_lnameTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.Client_lnameTextBox.Size = New System.Drawing.Size(164, 20)
         Me.Client_lnameTextBox.TabIndex = 4
-        '
-        'Client_telLabel
-        '
-        Client_telLabel.AutoSize = True
-        Client_telLabel.Location = New System.Drawing.Point(102, 140)
-        Client_telLabel.Name = "Client_telLabel"
-        Client_telLabel.Size = New System.Drawing.Size(49, 13)
-        Client_telLabel.TabIndex = 5
-        Client_telLabel.Text = "client tel:"
         '
         'Client_telTextBox
         '
         Me.Client_telTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientBindingSource, "client_tel", True))
-        Me.Client_telTextBox.Location = New System.Drawing.Point(175, 137)
+        Me.Client_telTextBox.Location = New System.Drawing.Point(218, 160)
         Me.Client_telTextBox.Name = "Client_telTextBox"
-        Me.Client_telTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.Client_telTextBox.Size = New System.Drawing.Size(165, 20)
         Me.Client_telTextBox.TabIndex = 6
-        '
-        'Client_emailLabel
-        '
-        Client_emailLabel.AutoSize = True
-        Client_emailLabel.Location = New System.Drawing.Point(102, 166)
-        Client_emailLabel.Name = "Client_emailLabel"
-        Client_emailLabel.Size = New System.Drawing.Size(62, 13)
-        Client_emailLabel.TabIndex = 7
-        Client_emailLabel.Text = "client email:"
         '
         'Client_emailTextBox
         '
         Me.Client_emailTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientBindingSource, "client_email", True))
-        Me.Client_emailTextBox.Location = New System.Drawing.Point(175, 163)
+        Me.Client_emailTextBox.Location = New System.Drawing.Point(218, 197)
         Me.Client_emailTextBox.Name = "Client_emailTextBox"
-        Me.Client_emailTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.Client_emailTextBox.Size = New System.Drawing.Size(165, 20)
         Me.Client_emailTextBox.TabIndex = 8
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(83, 261)
+        Me.Button1.Location = New System.Drawing.Point(83, 344)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(300, 30)
         Me.Button1.TabIndex = 9
@@ -162,27 +167,37 @@ Partial Class client_select
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(83, 216)
+        Me.Button2.Location = New System.Drawing.Point(83, 238)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(141, 30)
         Me.Button2.TabIndex = 10
-        Me.Button2.Text = "previous"
+        Me.Button2.Text = "Previous"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(242, 216)
+        Me.Button3.Location = New System.Drawing.Point(242, 238)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(141, 30)
         Me.Button3.TabIndex = 11
-        Me.Button3.Text = "next"
+        Me.Button3.Text = "Next"
         Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(155, 283)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(144, 46)
+        Me.Button4.TabIndex = 12
+        Me.Button4.Text = "Choose"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'client_select
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(441, 325)
+        Me.ClientSize = New System.Drawing.Size(490, 386)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -215,4 +230,5 @@ Partial Class client_select
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button4 As System.Windows.Forms.Button
 End Class

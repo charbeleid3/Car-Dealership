@@ -25,8 +25,6 @@ Partial Class Log_IN
         Me.components = New System.ComponentModel.Container()
         Dim UsernameLabel As System.Windows.Forms.Label
         Dim PasswordLabel As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Log_IN))
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.UsersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CarDealershipDataSet = New ghabach_motors.CarDealershipDataSet()
         Me.UsersTableAdapter = New ghabach_motors.CarDealershipDataSetTableAdapters.usersTableAdapter()
@@ -36,7 +34,6 @@ Partial Class Log_IN
         Me.PasswordTextBox = New System.Windows.Forms.TextBox()
         UsernameLabel = New System.Windows.Forms.Label()
         PasswordLabel = New System.Windows.Forms.Label()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UsersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CarDealershipDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -64,17 +61,6 @@ Partial Class Log_IN
         PasswordLabel.TabIndex = 3
         PasswordLabel.Text = "password:"
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.DataBindings.Add(New System.Windows.Forms.Binding("Image", Me.UsersBindingSource, "password", True))
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(327, 329)
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
         'UsersBindingSource
         '
         Me.UsersBindingSource.DataMember = "users"
@@ -92,7 +78,7 @@ Partial Class Log_IN
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.CARTableAdapter = Nothing
+        Me.TableAdapterManager.C_brandTableAdapter = Nothing
         Me.TableAdapterManager.ClientTableAdapter = Nothing
         Me.TableAdapterManager.MODELTableAdapter = Nothing
         Me.TableAdapterManager.RECEIPTTableAdapter = Nothing
@@ -129,23 +115,21 @@ Partial Class Log_IN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = Global.ghabach_motors.My.Resources.Resources.auto_keys1
         Me.ClientSize = New System.Drawing.Size(327, 329)
         Me.Controls.Add(Me.PasswordTextBox)
         Me.Controls.Add(Me.UsernameTextBox)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(UsernameLabel)
         Me.Controls.Add(PasswordLabel)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Name = "Log_IN"
         Me.Text = "log_in"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UsersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CarDealershipDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents CarDealershipDataSet As ghabach_motors.CarDealershipDataSet
     Friend WithEvents UsersBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents UsersTableAdapter As ghabach_motors.CarDealershipDataSetTableAdapters.usersTableAdapter

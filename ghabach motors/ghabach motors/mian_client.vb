@@ -35,5 +35,13 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         new_client.Show()
+        Me.Hide()
+
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Me.Hide()
+        choose_car.Show()
+
     End Sub
 End Class

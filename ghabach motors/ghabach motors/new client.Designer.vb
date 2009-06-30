@@ -63,6 +63,56 @@ Partial Class new_client
         Me.ClientBindingNavigator.SuspendLayout()
         Me.SuspendLayout()
         '
+        'Client_id_showLabel
+        '
+        Client_id_showLabel.AutoSize = True
+        Client_id_showLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Client_id_showLabel.Location = New System.Drawing.Point(12, 50)
+        Client_id_showLabel.Name = "Client_id_showLabel"
+        Client_id_showLabel.Size = New System.Drawing.Size(149, 26)
+        Client_id_showLabel.TabIndex = 1
+        Client_id_showLabel.Text = "client id show:"
+        '
+        'Client_fnameLabel
+        '
+        Client_fnameLabel.AutoSize = True
+        Client_fnameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Client_fnameLabel.Location = New System.Drawing.Point(12, 98)
+        Client_fnameLabel.Name = "Client_fnameLabel"
+        Client_fnameLabel.Size = New System.Drawing.Size(136, 26)
+        Client_fnameLabel.TabIndex = 3
+        Client_fnameLabel.Text = "client fname:"
+        '
+        'Client_lnameLabel
+        '
+        Client_lnameLabel.AutoSize = True
+        Client_lnameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Client_lnameLabel.Location = New System.Drawing.Point(12, 144)
+        Client_lnameLabel.Name = "Client_lnameLabel"
+        Client_lnameLabel.Size = New System.Drawing.Size(135, 26)
+        Client_lnameLabel.TabIndex = 5
+        Client_lnameLabel.Text = "client lname:"
+        '
+        'Client_telLabel
+        '
+        Client_telLabel.AutoSize = True
+        Client_telLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Client_telLabel.Location = New System.Drawing.Point(12, 192)
+        Client_telLabel.Name = "Client_telLabel"
+        Client_telLabel.Size = New System.Drawing.Size(98, 26)
+        Client_telLabel.TabIndex = 7
+        Client_telLabel.Text = "client tel:"
+        '
+        'Client_emailLabel
+        '
+        Client_emailLabel.AutoSize = True
+        Client_emailLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Client_emailLabel.Location = New System.Drawing.Point(12, 247)
+        Client_emailLabel.Name = "Client_emailLabel"
+        Client_emailLabel.Size = New System.Drawing.Size(128, 26)
+        Client_emailLabel.TabIndex = 9
+        Client_emailLabel.Text = "client email:"
+        '
         'CarDealershipDataSet
         '
         Me.CarDealershipDataSet.DataSetName = "CarDealershipDataSet"
@@ -80,23 +130,13 @@ Partial Class new_client
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.CARTableAdapter = Nothing
+        Me.TableAdapterManager.C_brandTableAdapter = Nothing
         Me.TableAdapterManager.ClientTableAdapter = Me.ClientTableAdapter
         Me.TableAdapterManager.MODELTableAdapter = Nothing
         Me.TableAdapterManager.RECEIPTTableAdapter = Nothing
         Me.TableAdapterManager.SUPPLIERTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = ghabach_motors.CarDealershipDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.usersTableAdapter = Nothing
-        '
-        'Client_id_showLabel
-        '
-        Client_id_showLabel.AutoSize = True
-        Client_id_showLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Client_id_showLabel.Location = New System.Drawing.Point(12, 50)
-        Client_id_showLabel.Name = "Client_id_showLabel"
-        Client_id_showLabel.Size = New System.Drawing.Size(149, 26)
-        Client_id_showLabel.TabIndex = 1
-        Client_id_showLabel.Text = "client id show:"
         '
         'Client_id_showTextBox
         '
@@ -106,16 +146,6 @@ Partial Class new_client
         Me.Client_id_showTextBox.Size = New System.Drawing.Size(130, 20)
         Me.Client_id_showTextBox.TabIndex = 2
         '
-        'Client_fnameLabel
-        '
-        Client_fnameLabel.AutoSize = True
-        Client_fnameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Client_fnameLabel.Location = New System.Drawing.Point(12, 98)
-        Client_fnameLabel.Name = "Client_fnameLabel"
-        Client_fnameLabel.Size = New System.Drawing.Size(136, 26)
-        Client_fnameLabel.TabIndex = 3
-        Client_fnameLabel.Text = "client fname:"
-        '
         'Client_fnameTextBox
         '
         Me.Client_fnameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientBindingSource, "client_fname", True))
@@ -123,16 +153,6 @@ Partial Class new_client
         Me.Client_fnameTextBox.Name = "Client_fnameTextBox"
         Me.Client_fnameTextBox.Size = New System.Drawing.Size(130, 20)
         Me.Client_fnameTextBox.TabIndex = 4
-        '
-        'Client_lnameLabel
-        '
-        Client_lnameLabel.AutoSize = True
-        Client_lnameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Client_lnameLabel.Location = New System.Drawing.Point(12, 144)
-        Client_lnameLabel.Name = "Client_lnameLabel"
-        Client_lnameLabel.Size = New System.Drawing.Size(135, 26)
-        Client_lnameLabel.TabIndex = 5
-        Client_lnameLabel.Text = "client lname:"
         '
         'Client_lnameTextBox
         '
@@ -142,16 +162,6 @@ Partial Class new_client
         Me.Client_lnameTextBox.Size = New System.Drawing.Size(130, 20)
         Me.Client_lnameTextBox.TabIndex = 6
         '
-        'Client_telLabel
-        '
-        Client_telLabel.AutoSize = True
-        Client_telLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Client_telLabel.Location = New System.Drawing.Point(12, 192)
-        Client_telLabel.Name = "Client_telLabel"
-        Client_telLabel.Size = New System.Drawing.Size(98, 26)
-        Client_telLabel.TabIndex = 7
-        Client_telLabel.Text = "client tel:"
-        '
         'Client_telTextBox
         '
         Me.Client_telTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClientBindingSource, "client_tel", True))
@@ -159,16 +169,6 @@ Partial Class new_client
         Me.Client_telTextBox.Name = "Client_telTextBox"
         Me.Client_telTextBox.Size = New System.Drawing.Size(130, 20)
         Me.Client_telTextBox.TabIndex = 8
-        '
-        'Client_emailLabel
-        '
-        Client_emailLabel.AutoSize = True
-        Client_emailLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Client_emailLabel.Location = New System.Drawing.Point(12, 247)
-        Client_emailLabel.Name = "Client_emailLabel"
-        Client_emailLabel.Size = New System.Drawing.Size(128, 26)
-        Client_emailLabel.TabIndex = 9
-        Client_emailLabel.Text = "client email:"
         '
         'Client_emailTextBox
         '
