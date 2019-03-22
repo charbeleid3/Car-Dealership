@@ -1,0 +1,16 @@
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.Form1.resources
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.Resources.resources
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\Car Dealearship.vbproj.GenerateResource.Cache
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.exe
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.xml
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.pdb
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\bin\Debug\WindowsApplication1.exe
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\bin\Debug\WindowsApplication1.pdb
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\bin\Debug\WindowsApplication1.xml
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\Car Dealearship.vbprojAssemblyReference.cache
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\Car Dealearship.vbproj.CoreCompileInputs.cache
+C:\Users\Sakr\Desktop\Car dealership\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
+C:\Users\Sakr\Desktop\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.exe
+C:\Users\Sakr\Desktop\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.xml
+C:\Users\Sakr\Desktop\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.pdb

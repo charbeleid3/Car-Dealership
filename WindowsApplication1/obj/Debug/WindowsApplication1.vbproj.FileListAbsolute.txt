@@ -1,0 +1,10 @@
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\bin\Debug\WindowsApplication1.exe
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\bin\Debug\WindowsApplication1.pdb
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\bin\Debug\WindowsApplication1.xml
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.Form1.resources
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.Resources.resources
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.vbproj.GenerateResource.Cache
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.exe
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.xml
+E:\programs\VB\VBProjects\Car dealership\WindowsApplication1\obj\Debug\WindowsApplication1.pdb
