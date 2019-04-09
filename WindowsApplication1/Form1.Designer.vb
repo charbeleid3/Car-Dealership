@@ -22,18 +22,16 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim Client_nameLabel As System.Windows.Forms.Label
+        Dim Client_telLabel As System.Windows.Forms.Label
+        Dim Client_addressLabel As System.Windows.Forms.Label
+        Dim Client_idLabel As System.Windows.Forms.Label
+        Dim Client_idLabel1 As System.Windows.Forms.Label
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Title1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TxtReciept = New System.Windows.Forms.TextBox()
-        Me.TxtPhone = New System.Windows.Forms.TextBox()
-        Me.TxtPost = New System.Windows.Forms.TextBox()
-        Me.TxtAddress = New System.Windows.Forms.TextBox()
-        Me.TxtName = New System.Windows.Forms.TextBox()
-        Me.LblPhone = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.LblAddress = New System.Windows.Forms.Label()
-        Me.lblName = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.ChGPS = New System.Windows.Forms.CheckBox()
         Me.ChLeather = New System.Windows.Forms.CheckBox()
@@ -63,8 +61,31 @@ Partial Class Form1
         Me.TxtBrand = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.LblBrand = New System.Windows.Forms.Label()
-        Me.CmbModel = New System.Windows.Forms.ComboBox()
+        Me.CarDealershipDataSet = New WindowsApplication1.CarDealershipDataSet()
+        Me.CARBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CARTableAdapter = New WindowsApplication1.CarDealershipDataSetTableAdapters.CARTableAdapter()
+        Me.TableAdapterManager = New WindowsApplication1.CarDealershipDataSetTableAdapters.TableAdapterManager()
         Me.CmbChosenCar = New System.Windows.Forms.ComboBox()
+        Me.MODELBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MODELTableAdapter = New WindowsApplication1.CarDealershipDataSetTableAdapters.MODELTableAdapter()
+        Me.CmbModel = New System.Windows.Forms.ComboBox()
+        Me.CLIENTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CLIENTTableAdapter = New WindowsApplication1.CarDealershipDataSetTableAdapters.CLIENTTableAdapter()
+        Me.Client_nameTextBox = New System.Windows.Forms.TextBox()
+        Me.Client_telTextBox = New System.Windows.Forms.TextBox()
+        Me.Client_addressTextBox = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.CLIENTBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Client_idComboBox = New System.Windows.Forms.ComboBox()
+        Me.Client_idTextBox = New System.Windows.Forms.TextBox()
+        Client_nameLabel = New System.Windows.Forms.Label()
+        Client_telLabel = New System.Windows.Forms.Label()
+        Client_addressLabel = New System.Windows.Forms.Label()
+        Client_idLabel = New System.Windows.Forms.Label()
+        Client_idLabel1 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -73,6 +94,11 @@ Partial Class Form1
         Me.Panel8.SuspendLayout()
         Me.Panel9.SuspendLayout()
         Me.Panel6.SuspendLayout()
+        CType(Me.CarDealershipDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CARBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MODELBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CLIENTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CLIENTBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -98,102 +124,36 @@ Partial Class Form1
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel2.Controls.Add(Me.Client_idTextBox)
+        Me.Panel2.Controls.Add(Client_idLabel1)
+        Me.Panel2.Controls.Add(Me.Client_idComboBox)
+        Me.Panel2.Controls.Add(Client_idLabel)
+        Me.Panel2.Controls.Add(Me.Button4)
+        Me.Panel2.Controls.Add(Me.Button3)
+        Me.Panel2.Controls.Add(Me.Button2)
+        Me.Panel2.Controls.Add(Me.Button1)
+        Me.Panel2.Controls.Add(Client_addressLabel)
+        Me.Panel2.Controls.Add(Me.Client_addressTextBox)
+        Me.Panel2.Controls.Add(Client_telLabel)
+        Me.Panel2.Controls.Add(Me.Client_telTextBox)
+        Me.Panel2.Controls.Add(Client_nameLabel)
+        Me.Panel2.Controls.Add(Me.Client_nameTextBox)
         Me.Panel2.Controls.Add(Me.TxtReciept)
-        Me.Panel2.Controls.Add(Me.TxtPhone)
-        Me.Panel2.Controls.Add(Me.TxtPost)
-        Me.Panel2.Controls.Add(Me.TxtAddress)
-        Me.Panel2.Controls.Add(Me.TxtName)
-        Me.Panel2.Controls.Add(Me.LblPhone)
-        Me.Panel2.Controls.Add(Me.Label11)
-        Me.Panel2.Controls.Add(Me.LblAddress)
-        Me.Panel2.Controls.Add(Me.lblName)
         Me.Panel2.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel2.Location = New System.Drawing.Point(1011, 118)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(323, 520)
+        Me.Panel2.Size = New System.Drawing.Size(568, 534)
         Me.Panel2.TabIndex = 1
         '
         'TxtReciept
         '
         Me.TxtReciept.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtReciept.Location = New System.Drawing.Point(15, 253)
+        Me.TxtReciept.Location = New System.Drawing.Point(15, 352)
         Me.TxtReciept.Multiline = True
         Me.TxtReciept.Name = "TxtReciept"
         Me.TxtReciept.ReadOnly = True
-        Me.TxtReciept.Size = New System.Drawing.Size(305, 261)
+        Me.TxtReciept.Size = New System.Drawing.Size(305, 162)
         Me.TxtReciept.TabIndex = 2
-        '
-        'TxtPhone
-        '
-        Me.TxtPhone.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtPhone.Location = New System.Drawing.Point(136, 208)
-        Me.TxtPhone.Name = "TxtPhone"
-        Me.TxtPhone.Size = New System.Drawing.Size(179, 39)
-        Me.TxtPhone.TabIndex = 2
-        '
-        'TxtPost
-        '
-        Me.TxtPost.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtPost.Location = New System.Drawing.Point(136, 147)
-        Me.TxtPost.Name = "TxtPost"
-        Me.TxtPost.Size = New System.Drawing.Size(179, 39)
-        Me.TxtPost.TabIndex = 2
-        '
-        'TxtAddress
-        '
-        Me.TxtAddress.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtAddress.Location = New System.Drawing.Point(136, 86)
-        Me.TxtAddress.Name = "TxtAddress"
-        Me.TxtAddress.Size = New System.Drawing.Size(179, 39)
-        Me.TxtAddress.TabIndex = 2
-        '
-        'TxtName
-        '
-        Me.TxtName.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtName.Location = New System.Drawing.Point(136, 21)
-        Me.TxtName.Name = "TxtName"
-        Me.TxtName.Size = New System.Drawing.Size(179, 39)
-        Me.TxtName.TabIndex = 2
-        '
-        'LblPhone
-        '
-        Me.LblPhone.AutoSize = True
-        Me.LblPhone.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblPhone.Location = New System.Drawing.Point(6, 208)
-        Me.LblPhone.Name = "LblPhone"
-        Me.LblPhone.Size = New System.Drawing.Size(132, 31)
-        Me.LblPhone.TabIndex = 0
-        Me.LblPhone.Text = "Phone Nb:"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(6, 147)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(137, 31)
-        Me.Label11.TabIndex = 0
-        Me.Label11.Text = "Post Code:"
-        '
-        'LblAddress
-        '
-        Me.LblAddress.AutoSize = True
-        Me.LblAddress.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblAddress.Location = New System.Drawing.Point(9, 89)
-        Me.LblAddress.Name = "LblAddress"
-        Me.LblAddress.Size = New System.Drawing.Size(112, 31)
-        Me.LblAddress.TabIndex = 0
-        Me.LblAddress.Text = "Address:"
-        '
-        'lblName
-        '
-        Me.lblName.AutoSize = True
-        Me.lblName.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblName.Location = New System.Drawing.Point(9, 24)
-        Me.lblName.Name = "lblName"
-        Me.lblName.Size = New System.Drawing.Size(87, 31)
-        Me.lblName.TabIndex = 0
-        Me.lblName.Text = "Name:"
         '
         'Panel3
         '
@@ -344,7 +304,7 @@ Partial Class Form1
         Me.TxtTotal.Location = New System.Drawing.Point(170, 111)
         Me.TxtTotal.Name = "TxtTotal"
         Me.TxtTotal.ReadOnly = True
-        Me.TxtTotal.Size = New System.Drawing.Size(220, 39)
+        Me.TxtTotal.Size = New System.Drawing.Size(216, 39)
         Me.TxtTotal.TabIndex = 4
         '
         'TxtSub
@@ -462,11 +422,11 @@ Partial Class Form1
         'Panel6
         '
         Me.Panel6.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel6.Controls.Add(Me.CmbModel)
+        Me.Panel6.Controls.Add(Me.CmbChosenCar)
         Me.Panel6.Controls.Add(Me.TxtBrand)
         Me.Panel6.Controls.Add(Me.Label1)
         Me.Panel6.Controls.Add(Me.LblBrand)
-        Me.Panel6.Controls.Add(Me.CmbModel)
-        Me.Panel6.Controls.Add(Me.CmbChosenCar)
         Me.Panel6.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel6.Location = New System.Drawing.Point(22, 374)
         Me.Panel6.Name = "Panel6"
@@ -502,36 +462,210 @@ Partial Class Form1
         Me.LblBrand.TabIndex = 0
         Me.LblBrand.Text = "Car Brand:"
         '
-        'CmbModel
+        'CarDealershipDataSet
         '
-        Me.CmbModel.DropDownHeight = 160
-        Me.CmbModel.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmbModel.FormattingEnabled = True
-        Me.CmbModel.IntegralHeight = False
-        Me.CmbModel.Location = New System.Drawing.Point(256, 64)
-        Me.CmbModel.Name = "CmbModel"
-        Me.CmbModel.Size = New System.Drawing.Size(228, 39)
-        Me.CmbModel.TabIndex = 1
-        Me.CmbModel.Text = "Choose A Model..."
+        Me.CarDealershipDataSet.DataSetName = "CarDealershipDataSet"
+        Me.CarDealershipDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CARBindingSource
+        '
+        Me.CARBindingSource.DataMember = "CAR"
+        Me.CARBindingSource.DataSource = Me.CarDealershipDataSet
+        '
+        'CARTableAdapter
+        '
+        Me.CARTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CARTableAdapter = Me.CARTableAdapter
+        Me.TableAdapterManager.CLIENTTableAdapter = Me.CLIENTTableAdapter
+        Me.TableAdapterManager.MODELTableAdapter = Me.MODELTableAdapter
+        Me.TableAdapterManager.RECEIPTTableAdapter = Nothing
+        Me.TableAdapterManager.SUPPLIERTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = WindowsApplication1.CarDealershipDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.usersTableAdapter = Nothing
         '
         'CmbChosenCar
         '
-        Me.CmbChosenCar.DropDownHeight = 160
-        Me.CmbChosenCar.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbChosenCar.DataSource = Me.CARBindingSource
+        Me.CmbChosenCar.DisplayMember = "car_name"
         Me.CmbChosenCar.FormattingEnabled = True
-        Me.CmbChosenCar.IntegralHeight = False
-        Me.CmbChosenCar.Location = New System.Drawing.Point(15, 64)
+        Me.CmbChosenCar.Location = New System.Drawing.Point(23, 64)
         Me.CmbChosenCar.Name = "CmbChosenCar"
-        Me.CmbChosenCar.Size = New System.Drawing.Size(228, 39)
-        Me.CmbChosenCar.TabIndex = 1
-        Me.CmbChosenCar.Text = "Choose A Brand..."
+        Me.CmbChosenCar.Size = New System.Drawing.Size(227, 39)
+        Me.CmbChosenCar.TabIndex = 5
+        Me.CmbChosenCar.ValueMember = "car_id"
+        '
+        'MODELBindingSource
+        '
+        Me.MODELBindingSource.DataMember = "MODEL"
+        Me.MODELBindingSource.DataSource = Me.CarDealershipDataSet
+        '
+        'MODELTableAdapter
+        '
+        Me.MODELTableAdapter.ClearBeforeFill = True
+        '
+        'CmbModel
+        '
+        Me.CmbModel.DataSource = Me.MODELBindingSource
+        Me.CmbModel.DisplayMember = "model_name"
+        Me.CmbModel.FormattingEnabled = True
+        Me.CmbModel.Location = New System.Drawing.Point(263, 64)
+        Me.CmbModel.Name = "CmbModel"
+        Me.CmbModel.Size = New System.Drawing.Size(228, 39)
+        Me.CmbModel.TabIndex = 6
+        Me.CmbModel.ValueMember = "model_id"
+        '
+        'CLIENTBindingSource
+        '
+        Me.CLIENTBindingSource.DataMember = "CLIENT"
+        Me.CLIENTBindingSource.DataSource = Me.CarDealershipDataSet
+        '
+        'CLIENTTableAdapter
+        '
+        Me.CLIENTTableAdapter.ClearBeforeFill = True
+        '
+        'Client_nameLabel
+        '
+        Client_nameLabel.AutoSize = True
+        Client_nameLabel.Location = New System.Drawing.Point(35, 112)
+        Client_nameLabel.Name = "Client_nameLabel"
+        Client_nameLabel.Size = New System.Drawing.Size(153, 31)
+        Client_nameLabel.TabIndex = 2
+        Client_nameLabel.Text = "client name:"
+        '
+        'Client_nameTextBox
+        '
+        Me.Client_nameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CLIENTBindingSource, "client_name", True))
+        Me.Client_nameTextBox.Location = New System.Drawing.Point(194, 109)
+        Me.Client_nameTextBox.Name = "Client_nameTextBox"
+        Me.Client_nameTextBox.Size = New System.Drawing.Size(148, 39)
+        Me.Client_nameTextBox.TabIndex = 3
+        '
+        'Client_telLabel
+        '
+        Client_telLabel.AutoSize = True
+        Client_telLabel.Location = New System.Drawing.Point(67, 156)
+        Client_telLabel.Name = "Client_telLabel"
+        Client_telLabel.Size = New System.Drawing.Size(121, 31)
+        Client_telLabel.TabIndex = 3
+        Client_telLabel.Text = "client tel:"
+        '
+        'Client_telTextBox
+        '
+        Me.Client_telTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CLIENTBindingSource, "client_tel", True))
+        Me.Client_telTextBox.Location = New System.Drawing.Point(194, 153)
+        Me.Client_telTextBox.Name = "Client_telTextBox"
+        Me.Client_telTextBox.Size = New System.Drawing.Size(148, 39)
+        Me.Client_telTextBox.TabIndex = 4
+        '
+        'Client_addressLabel
+        '
+        Client_addressLabel.AutoSize = True
+        Client_addressLabel.Location = New System.Drawing.Point(9, 201)
+        Client_addressLabel.Name = "Client_addressLabel"
+        Client_addressLabel.Size = New System.Drawing.Size(179, 31)
+        Client_addressLabel.TabIndex = 5
+        Client_addressLabel.Text = "client address:"
+        AddHandler Client_addressLabel.Click, AddressOf Me.Client_addressLabel_Click
+        '
+        'Client_addressTextBox
+        '
+        Me.Client_addressTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CLIENTBindingSource, "client_address", True))
+        Me.Client_addressTextBox.Location = New System.Drawing.Point(194, 198)
+        Me.Client_addressTextBox.Name = "Client_addressTextBox"
+        Me.Client_addressTextBox.Size = New System.Drawing.Size(148, 39)
+        Me.Client_addressTextBox.TabIndex = 6
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(53, 245)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(121, 41)
+        Me.Button1.TabIndex = 7
+        Me.Button1.Text = "Previous"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(194, 245)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(125, 41)
+        Me.Button2.TabIndex = 8
+        Me.Button2.Text = "Next"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(194, 293)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(125, 41)
+        Me.Button3.TabIndex = 9
+        Me.Button3.Text = "Save"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(53, 293)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(125, 41)
+        Me.Button4.TabIndex = 10
+        Me.Button4.Text = "Add"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'CLIENTBindingSource1
+        '
+        Me.CLIENTBindingSource1.DataMember = "CLIENT"
+        Me.CLIENTBindingSource1.DataSource = Me.CarDealershipDataSet
+        '
+        'Client_idLabel
+        '
+        Client_idLabel.AutoSize = True
+        Client_idLabel.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Client_idLabel.Location = New System.Drawing.Point(11, 17)
+        Client_idLabel.Name = "Client_idLabel"
+        Client_idLabel.Size = New System.Drawing.Size(177, 23)
+        Client_idLabel.TabIndex = 11
+        Client_idLabel.Text = "Choose your client:"
+        '
+        'Client_idComboBox
+        '
+        Me.Client_idComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CLIENTBindingSource, "client_id", True))
+        Me.Client_idComboBox.DataSource = Me.CLIENTBindingSource
+        Me.Client_idComboBox.DisplayMember = "client_name"
+        Me.Client_idComboBox.FormattingEnabled = True
+        Me.Client_idComboBox.Location = New System.Drawing.Point(195, 10)
+        Me.Client_idComboBox.Name = "Client_idComboBox"
+        Me.Client_idComboBox.Size = New System.Drawing.Size(148, 39)
+        Me.Client_idComboBox.TabIndex = 13
+        Me.Client_idComboBox.ValueMember = "client_id"
+        '
+        'Client_idLabel1
+        '
+        Client_idLabel1.AutoSize = True
+        Client_idLabel1.Location = New System.Drawing.Point(72, 69)
+        Client_idLabel1.Name = "Client_idLabel1"
+        Client_idLabel1.Size = New System.Drawing.Size(116, 31)
+        Client_idLabel1.TabIndex = 13
+        Client_idLabel1.Text = "client id:"
+        '
+        'Client_idTextBox
+        '
+        Me.Client_idTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CLIENTBindingSource, "client_id", True))
+        Me.Client_idTextBox.Location = New System.Drawing.Point(195, 61)
+        Me.Client_idTextBox.Name = "Client_idTextBox"
+        Me.Client_idTextBox.Size = New System.Drawing.Size(147, 39)
+        Me.Client_idTextBox.TabIndex = 15
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(1354, 650)
+        Me.ClientSize = New System.Drawing.Size(1370, 750)
         Me.Controls.Add(Me.Panel9)
         Me.Controls.Add(Me.Panel8)
         Me.Controls.Add(Me.Panel7)
@@ -556,6 +690,11 @@ Partial Class Form1
         Me.Panel9.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
+        CType(Me.CarDealershipDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CARBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MODELBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CLIENTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CLIENTBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -578,14 +717,6 @@ Partial Class Form1
     Friend WithEvents LblBrand As System.Windows.Forms.Label
     Friend WithEvents Title1 As System.Windows.Forms.Label
     Friend WithEvents TxtReciept As System.Windows.Forms.TextBox
-    Friend WithEvents TxtPhone As System.Windows.Forms.TextBox
-    Friend WithEvents TxtPost As System.Windows.Forms.TextBox
-    Friend WithEvents TxtAddress As System.Windows.Forms.TextBox
-    Friend WithEvents TxtName As System.Windows.Forms.TextBox
-    Friend WithEvents LblPhone As System.Windows.Forms.Label
-    Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents LblAddress As System.Windows.Forms.Label
-    Friend WithEvents lblName As System.Windows.Forms.Label
     Friend WithEvents BtnReset As System.Windows.Forms.Button
     Friend WithEvents BtnConvert As System.Windows.Forms.Button
     Friend WithEvents TxtKilo As System.Windows.Forms.TextBox
@@ -593,7 +724,6 @@ Partial Class Form1
     Friend WithEvents BtnExit As System.Windows.Forms.Button
     Friend WithEvents BtnReset2 As System.Windows.Forms.Button
     Friend WithEvents BtnTotal As System.Windows.Forms.Button
-    Friend WithEvents CmbChosenCar As System.Windows.Forms.ComboBox
     Friend WithEvents BtnReceipt As System.Windows.Forms.Button
     Friend WithEvents TxtMile As System.Windows.Forms.TextBox
     Friend WithEvents TxtTotal As System.Windows.Forms.TextBox
@@ -601,6 +731,25 @@ Partial Class Form1
     Friend WithEvents TxtTax As System.Windows.Forms.TextBox
     Friend WithEvents TxtBrand As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents CarDealershipDataSet As WindowsApplication1.CarDealershipDataSet
+    Friend WithEvents CARBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents CARTableAdapter As WindowsApplication1.CarDealershipDataSetTableAdapters.CARTableAdapter
+    Friend WithEvents TableAdapterManager As WindowsApplication1.CarDealershipDataSetTableAdapters.TableAdapterManager
+    Friend WithEvents CmbChosenCar As System.Windows.Forms.ComboBox
+    Friend WithEvents MODELTableAdapter As WindowsApplication1.CarDealershipDataSetTableAdapters.MODELTableAdapter
+    Friend WithEvents MODELBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents CmbModel As System.Windows.Forms.ComboBox
+    Friend WithEvents CLIENTTableAdapter As WindowsApplication1.CarDealershipDataSetTableAdapters.CLIENTTableAdapter
+    Friend WithEvents CLIENTBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Client_addressTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Client_telTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Client_nameTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents CLIENTBindingSource1 As System.Windows.Forms.BindingSource
+    Friend WithEvents Client_idComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents Client_idTextBox As System.Windows.Forms.TextBox
 
 End Class

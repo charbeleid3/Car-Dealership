@@ -23,6 +23,12 @@
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'CarDealershipDataSet.CLIENT' table. You can move, or remove it, as needed.
+        Me.CLIENTTableAdapter.Fill(Me.CarDealershipDataSet.CLIENT)
+        'TODO: This line of code loads data into the 'CarDealershipDataSet.MODEL' table. You can move, or remove it, as needed.
+        Me.MODELTableAdapter.Fill(Me.CarDealershipDataSet.MODEL)
+        'TODO: This line of code loads data into the 'CarDealershipDataSet.CAR' table. You can move, or remove it, as needed.
+        Me.CARTableAdapter.Fill(Me.CarDealershipDataSet.CAR)
         CmbChosenCar.Items.Add("Ford")
         CmbChosenCar.Items.Add("porshe")
         CmbChosenCar.Items.Add("Mercedes Benz")
@@ -41,11 +47,11 @@
     End Sub
 
     Private Sub BtnReset2_Click(sender As Object, e As EventArgs) Handles BtnReset2.Click
-        TxtAddress.Text = ""
+        Client_addressTextBox.Text = ""
         TxtBrand.Text = ""
-        TxtName.Text = ""
-        TxtPhone.Text = ""
-        TxtPost.Text = ""
+        Client_nameTextBox.Text = ""
+        Client_telTextBox.Text = ""
+
         TxtTax.Text = ""
         TxtSub.Text = ""
         TxtTotal.Text = ""
@@ -82,7 +88,7 @@
 
     End Sub
 
-    Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbChosenCar.SelectedIndexChanged
+    Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs)
 
 
 
@@ -122,11 +128,11 @@
 
     End Sub
 
-    Private Sub LblAdress_Click(sender As Object, e As EventArgs) Handles LblAddress.Click
+    Private Sub LblAdress_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles TxtPost.TextChanged
+    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -781,7 +787,7 @@
     End Sub
 
 
-    Private Sub CmbModel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbModel.SelectedIndexChanged
+    Private Sub CmbModel_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -797,10 +803,10 @@
     Private Sub BtnReceipt_Click(sender As Object, e As EventArgs) Handles BtnReceipt.Click
         TxtReciept.AppendText(vbTab & vbTab & "Car Dealer System:" & vbNewLine)
         TxtReciept.AppendText(vbTab & vbTab & "================================" & vbNewLine)
-        TxtReciept.AppendText(vbTab & vbTab & "Name:" & vbTab & vbTab & TxtName.Text & vbNewLine)
-        TxtReciept.AppendText(vbTab & vbTab & "Address:" & vbTab & TxtAddress.Text & vbNewLine)
-        TxtReciept.AppendText(vbTab & vbTab & "Post Code:" & vbTab & TxtPost.Text & vbNewLine)
-        TxtReciept.AppendText(vbTab & vbTab & "Phone Nb:" & vbTab & TxtPhone.Text & vbNewLine)
+        TxtReciept.AppendText(vbTab & vbTab & "Name:" & vbTab & vbTab & Client_nameTextBox.Text & vbNewLine)
+        TxtReciept.AppendText(vbTab & vbTab & "Address:" & vbTab & Client_addressTextBox.Text & vbNewLine)
+
+        TxtReciept.AppendText(vbTab & vbTab & "Phone Nb:" & vbTab & Client_telTextBox.Text & vbNewLine)
         TxtReciept.AppendText(vbTab & vbTab & "Chosen Car:" & CmbChosenCar.Text & vbNewLine)
         TxtReciept.AppendText(vbTab & vbTab & "Car Model:" & CmbModel.Text & vbNewLine)
         TxtReciept.AppendText(vbTab & vbTab & "Tax Paid:" & vbTab & vbTab & TxtTax.Text & vbNewLine)
@@ -813,7 +819,51 @@
 
     End Sub
 
-    Private Sub TxtAdress_TextChanged(sender As Object, e As EventArgs) Handles TxtAddress.TextChanged
+    Private Sub TxtAdress_TextChanged(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub CARBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
+        Me.Validate()
+        Me.CARBindingSource.EndEdit()
+        Me.TableAdapterManager.UpdateAll(Me.CarDealershipDataSet)
+
+    End Sub
+
+    Private Sub Client_addressLabel_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Client_addressTextBox_TextChanged(sender As Object, e As EventArgs) Handles Client_addressTextBox.TextChanged
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Me.CLIENTBindingSource.MovePrevious()
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Me.CLIENTBindingSource.MoveNext()
+
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Try
+            Me.Validate()
+            Me.CLIENTBindingSource.EndEdit()
+            Me.TableAdapterManager.UpdateAll(Me.CarDealershipDataSet)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Try
+            Me.CLIENTBindingSource.AddNew()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class
