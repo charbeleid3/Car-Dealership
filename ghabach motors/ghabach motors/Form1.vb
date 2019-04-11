@@ -2,9 +2,20 @@
 Imports System.Data.Sql
 Imports System.Data.SqlTypes
 Imports System.Configuration
-Public Class Form1
+Public Class Log_IN
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+
+
+
+
+
+
+
+
+
+
+
 
     End Sub
 
@@ -32,7 +43,7 @@ Public Class Form1
 
 
         If dr.Read Then
-            main.Show()
+            client_select.Show()
             Me.Hide()
 
 

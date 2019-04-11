@@ -37,9 +37,13 @@ Partial Public Class CarDealershipDataSet
     
     Private tableusers As usersDataTable
     
-    Private relationFK__CAR__model_id__182C9B23 As Global.System.Data.DataRelation
+    Private relationFK_CAR_MODEL As Global.System.Data.DataRelation
     
-    Private relationFK__CAR__supp_id__1920BF5C As Global.System.Data.DataRelation
+    Private relationFK_CAR_SUPPLIER As Global.System.Data.DataRelation
+    
+    Private relationFK_RECEIPT_CAR As Global.System.Data.DataRelation
+    
+    Private relationFK_RECEIPT_Client As Global.System.Data.DataRelation
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -318,8 +322,10 @@ Partial Public Class CarDealershipDataSet
                 Me.tableusers.InitVars
             End If
         End If
-        Me.relationFK__CAR__model_id__182C9B23 = Me.Relations("FK__CAR__model_id__182C9B23")
-        Me.relationFK__CAR__supp_id__1920BF5C = Me.Relations("FK__CAR__supp_id__1920BF5C")
+        Me.relationFK_CAR_MODEL = Me.Relations("FK_CAR_MODEL")
+        Me.relationFK_CAR_SUPPLIER = Me.Relations("FK_CAR_SUPPLIER")
+        Me.relationFK_RECEIPT_CAR = Me.Relations("FK_RECEIPT_CAR")
+        Me.relationFK_RECEIPT_Client = Me.Relations("FK_RECEIPT_Client")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -342,10 +348,14 @@ Partial Public Class CarDealershipDataSet
         MyBase.Tables.Add(Me.tableSUPPLIER)
         Me.tableusers = New usersDataTable()
         MyBase.Tables.Add(Me.tableusers)
-        Me.relationFK__CAR__model_id__182C9B23 = New Global.System.Data.DataRelation("FK__CAR__model_id__182C9B23", New Global.System.Data.DataColumn() {Me.tableMODEL.model_idColumn}, New Global.System.Data.DataColumn() {Me.tableCAR.model_idColumn}, false)
-        Me.Relations.Add(Me.relationFK__CAR__model_id__182C9B23)
-        Me.relationFK__CAR__supp_id__1920BF5C = New Global.System.Data.DataRelation("FK__CAR__supp_id__1920BF5C", New Global.System.Data.DataColumn() {Me.tableSUPPLIER.supp_idColumn}, New Global.System.Data.DataColumn() {Me.tableCAR.supp_idColumn}, false)
-        Me.Relations.Add(Me.relationFK__CAR__supp_id__1920BF5C)
+        Me.relationFK_CAR_MODEL = New Global.System.Data.DataRelation("FK_CAR_MODEL", New Global.System.Data.DataColumn() {Me.tableMODEL.model_idColumn}, New Global.System.Data.DataColumn() {Me.tableCAR.model_idColumn}, false)
+        Me.Relations.Add(Me.relationFK_CAR_MODEL)
+        Me.relationFK_CAR_SUPPLIER = New Global.System.Data.DataRelation("FK_CAR_SUPPLIER", New Global.System.Data.DataColumn() {Me.tableSUPPLIER.supp_idColumn}, New Global.System.Data.DataColumn() {Me.tableCAR.supp_idColumn}, false)
+        Me.Relations.Add(Me.relationFK_CAR_SUPPLIER)
+        Me.relationFK_RECEIPT_CAR = New Global.System.Data.DataRelation("FK_RECEIPT_CAR", New Global.System.Data.DataColumn() {Me.tableCAR.car_idColumn}, New Global.System.Data.DataColumn() {Me.tableRECEIPT.car_idColumn}, false)
+        Me.Relations.Add(Me.relationFK_RECEIPT_CAR)
+        Me.relationFK_RECEIPT_Client = New Global.System.Data.DataRelation("FK_RECEIPT_Client", New Global.System.Data.DataColumn() {Me.tableClient.Client_IDColumn}, New Global.System.Data.DataColumn() {Me.tableRECEIPT.client_idColumn}, false)
+        Me.Relations.Add(Me.relationFK_RECEIPT_Client)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -600,14 +610,14 @@ Partial Public Class CarDealershipDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddCARRow(ByVal car_name As String, ByVal parentMODELRowByFK__CAR__model_id__182C9B23 As MODELRow, ByVal car_year As Integer, ByVal parentSUPPLIERRowByFK__CAR__supp_id__1920BF5C As SUPPLIERRow, ByVal price As Integer) As CARRow
+        Public Overloads Function AddCARRow(ByVal car_name As String, ByVal parentMODELRowByFK_CAR_MODEL As MODELRow, ByVal car_year As Integer, ByVal parentSUPPLIERRowByFK_CAR_SUPPLIER As SUPPLIERRow, ByVal price As Integer) As CARRow
             Dim rowCARRow As CARRow = CType(Me.NewRow,CARRow)
             Dim columnValuesArray() As Object = New Object() {Nothing, car_name, Nothing, car_year, Nothing, price}
-            If (Not (parentMODELRowByFK__CAR__model_id__182C9B23) Is Nothing) Then
-                columnValuesArray(2) = parentMODELRowByFK__CAR__model_id__182C9B23(0)
+            If (Not (parentMODELRowByFK_CAR_MODEL) Is Nothing) Then
+                columnValuesArray(2) = parentMODELRowByFK_CAR_MODEL(0)
             End If
-            If (Not (parentSUPPLIERRowByFK__CAR__supp_id__1920BF5C) Is Nothing) Then
-                columnValuesArray(4) = parentSUPPLIERRowByFK__CAR__supp_id__1920BF5C(0)
+            If (Not (parentSUPPLIERRowByFK_CAR_SUPPLIER) Is Nothing) Then
+                columnValuesArray(4) = parentSUPPLIERRowByFK_CAR_SUPPLIER(0)
             End If
             rowCARRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCARRow)
@@ -668,6 +678,8 @@ Partial Public Class CarDealershipDataSet
             Me.columncar_id.ReadOnly = true
             Me.columncar_id.Unique = true
             Me.columncar_name.MaxLength = 50
+            Me.columnmodel_id.AllowDBNull = false
+            Me.columnsupp_id.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -807,6 +819,8 @@ Partial Public Class CarDealershipDataSet
         
         Private columnClient_ID As Global.System.Data.DataColumn
         
+        Private columnclient_id_show As Global.System.Data.DataColumn
+        
         Private columnclient_fname As Global.System.Data.DataColumn
         
         Private columnclient_lname As Global.System.Data.DataColumn
@@ -855,6 +869,14 @@ Partial Public Class CarDealershipDataSet
         Public ReadOnly Property Client_IDColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnClient_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property client_id_showColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnclient_id_show
             End Get
         End Property
         
@@ -927,12 +949,18 @@ Partial Public Class CarDealershipDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddClientRow(ByVal Client_ID As Integer, ByVal client_fname As String, ByVal client_lname As String, ByVal client_tel() As Byte, ByVal client_email As String) As ClientRow
+        Public Overloads Function AddClientRow(ByVal client_id_show As String, ByVal client_fname As String, ByVal client_lname As String, ByVal client_tel As String, ByVal client_email As String) As ClientRow
             Dim rowClientRow As ClientRow = CType(Me.NewRow,ClientRow)
-            Dim columnValuesArray() As Object = New Object() {Client_ID, client_fname, client_lname, client_tel, client_email}
+            Dim columnValuesArray() As Object = New Object() {Nothing, client_id_show, client_fname, client_lname, client_tel, client_email}
             rowClientRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowClientRow)
             Return rowClientRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function FindByClient_ID(ByVal Client_ID As Integer) As ClientRow
+            Return CType(Me.Rows.Find(New Object() {Client_ID}),ClientRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -953,6 +981,7 @@ Partial Public Class CarDealershipDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnClient_ID = MyBase.Columns("Client_ID")
+            Me.columnclient_id_show = MyBase.Columns("client_id_show")
             Me.columnclient_fname = MyBase.Columns("client_fname")
             Me.columnclient_lname = MyBase.Columns("client_lname")
             Me.columnclient_tel = MyBase.Columns("client_tel")
@@ -964,17 +993,27 @@ Partial Public Class CarDealershipDataSet
         Private Sub InitClass()
             Me.columnClient_ID = New Global.System.Data.DataColumn("Client_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnClient_ID)
+            Me.columnclient_id_show = New Global.System.Data.DataColumn("client_id_show", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnclient_id_show)
             Me.columnclient_fname = New Global.System.Data.DataColumn("client_fname", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnclient_fname)
             Me.columnclient_lname = New Global.System.Data.DataColumn("client_lname", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnclient_lname)
-            Me.columnclient_tel = New Global.System.Data.DataColumn("client_tel", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnclient_tel = New Global.System.Data.DataColumn("client_tel", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnclient_tel)
             Me.columnclient_email = New Global.System.Data.DataColumn("client_email", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnclient_email)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnClient_ID}, true))
+            Me.columnClient_ID.AutoIncrement = true
+            Me.columnClient_ID.AutoIncrementSeed = -1
+            Me.columnClient_ID.AutoIncrementStep = -1
             Me.columnClient_ID.AllowDBNull = false
+            Me.columnClient_ID.ReadOnly = true
+            Me.columnClient_ID.Unique = true
+            Me.columnclient_id_show.MaxLength = 50
             Me.columnclient_fname.MaxLength = 55
             Me.columnclient_lname.MaxLength = 55
+            Me.columnclient_tel.MaxLength = 50
             Me.columnclient_email.MaxLength = 55
         End Sub
         
@@ -1500,9 +1539,15 @@ Partial Public Class CarDealershipDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddRECEIPTRow(ByVal receipt_id As Integer, ByVal client_id As Integer, ByVal car_id As Integer, ByVal price As Integer) As RECEIPTRow
+        Public Overloads Function AddRECEIPTRow(ByVal receipt_id As Integer, ByVal parentClientRowByFK_RECEIPT_Client As ClientRow, ByVal parentCARRowByFK_RECEIPT_CAR As CARRow, ByVal price As Integer) As RECEIPTRow
             Dim rowRECEIPTRow As RECEIPTRow = CType(Me.NewRow,RECEIPTRow)
-            Dim columnValuesArray() As Object = New Object() {receipt_id, client_id, car_id, price}
+            Dim columnValuesArray() As Object = New Object() {receipt_id, Nothing, Nothing, price}
+            If (Not (parentClientRowByFK_RECEIPT_Client) Is Nothing) Then
+                columnValuesArray(1) = parentClientRowByFK_RECEIPT_Client(0)
+            End If
+            If (Not (parentCARRowByFK_RECEIPT_CAR) Is Nothing) Then
+                columnValuesArray(2) = parentCARRowByFK_RECEIPT_CAR(0)
+            End If
             rowRECEIPTRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowRECEIPTRow)
             Return rowRECEIPTRow
@@ -1551,6 +1596,7 @@ Partial Public Class CarDealershipDataSet
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnreceipt_id}, true))
             Me.columnreceipt_id.AllowDBNull = false
             Me.columnreceipt_id.Unique = true
+            Me.columnclient_id.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2291,11 +2337,7 @@ Partial Public Class CarDealershipDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property model_id() As Integer
             Get
-                Try 
-                    Return CType(Me(Me.tableCAR.model_idColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'model_id' in table 'CAR' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableCAR.model_idColumn),Integer)
             End Get
             Set
                 Me(Me.tableCAR.model_idColumn) = value
@@ -2321,11 +2363,7 @@ Partial Public Class CarDealershipDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property supp_id() As Integer
             Get
-                Try 
-                    Return CType(Me(Me.tableCAR.supp_idColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'supp_id' in table 'CAR' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableCAR.supp_idColumn),Integer)
             End Get
             Set
                 Me(Me.tableCAR.supp_idColumn) = value
@@ -2351,10 +2389,10 @@ Partial Public Class CarDealershipDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property MODELRow() As MODELRow
             Get
-                Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK__CAR__model_id__182C9B23")),MODELRow)
+                Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_CAR_MODEL")),MODELRow)
             End Get
             Set
-                Me.SetParentRow(value, Me.Table.ParentRelations("FK__CAR__model_id__182C9B23"))
+                Me.SetParentRow(value, Me.Table.ParentRelations("FK_CAR_MODEL"))
             End Set
         End Property
         
@@ -2362,10 +2400,10 @@ Partial Public Class CarDealershipDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property SUPPLIERRow() As SUPPLIERRow
             Get
-                Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK__CAR__supp_id__1920BF5C")),SUPPLIERRow)
+                Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_CAR_SUPPLIER")),SUPPLIERRow)
             End Get
             Set
-                Me.SetParentRow(value, Me.Table.ParentRelations("FK__CAR__supp_id__1920BF5C"))
+                Me.SetParentRow(value, Me.Table.ParentRelations("FK_CAR_SUPPLIER"))
             End Set
         End Property
         
@@ -2383,18 +2421,6 @@ Partial Public Class CarDealershipDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Ismodel_idNull() As Boolean
-            Return Me.IsNull(Me.tableCAR.model_idColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setmodel_idNull()
-            Me(Me.tableCAR.model_idColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Iscar_yearNull() As Boolean
             Return Me.IsNull(Me.tableCAR.car_yearColumn)
         End Function
@@ -2403,18 +2429,6 @@ Partial Public Class CarDealershipDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Setcar_yearNull()
             Me(Me.tableCAR.car_yearColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Issupp_idNull() As Boolean
-            Return Me.IsNull(Me.tableCAR.supp_idColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setsupp_idNull()
-            Me(Me.tableCAR.supp_idColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2428,6 +2442,16 @@ Partial Public Class CarDealershipDataSet
         Public Sub SetpriceNull()
             Me(Me.tableCAR.priceColumn) = Global.System.Convert.DBNull
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function GetRECEIPTRows() As RECEIPTRow()
+            If (Me.Table.ChildRelations("FK_RECEIPT_CAR") Is Nothing) Then
+                Return New RECEIPTRow(-1) {}
+            Else
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_RECEIPT_CAR")),RECEIPTRow())
+            End If
+        End Function
     End Class
     
     '''<summary>
@@ -2453,6 +2477,21 @@ Partial Public Class CarDealershipDataSet
             End Get
             Set
                 Me(Me.tableClient.Client_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property client_id_show() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableClient.client_id_showColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'client_id_show' in table 'Client' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableClient.client_id_showColumn) = value
             End Set
         End Property
         
@@ -2488,10 +2527,10 @@ Partial Public Class CarDealershipDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property client_tel() As Byte()
+        Public Property client_tel() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableClient.client_telColumn),Byte())
+                    Return CType(Me(Me.tableClient.client_telColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'client_tel' in table 'Client' is DBNull.", e)
                 End Try
@@ -2515,6 +2554,18 @@ Partial Public Class CarDealershipDataSet
                 Me(Me.tableClient.client_emailColumn) = value
             End Set
         End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isclient_id_showNull() As Boolean
+            Return Me.IsNull(Me.tableClient.client_id_showColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setclient_id_showNull()
+            Me(Me.tableClient.client_id_showColumn) = Global.System.Convert.DBNull
+        End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -2563,6 +2614,16 @@ Partial Public Class CarDealershipDataSet
         Public Sub Setclient_emailNull()
             Me(Me.tableClient.client_emailColumn) = Global.System.Convert.DBNull
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function GetRECEIPTRows() As RECEIPTRow()
+            If (Me.Table.ChildRelations("FK_RECEIPT_Client") Is Nothing) Then
+                Return New RECEIPTRow(-1) {}
+            Else
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_RECEIPT_Client")),RECEIPTRow())
+            End If
+        End Function
     End Class
     
     '''<summary>
@@ -2621,10 +2682,10 @@ Partial Public Class CarDealershipDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function GetCARRows() As CARRow()
-            If (Me.Table.ChildRelations("FK__CAR__model_id__182C9B23") Is Nothing) Then
+            If (Me.Table.ChildRelations("FK_CAR_MODEL") Is Nothing) Then
                 Return New CARRow(-1) {}
             Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK__CAR__model_id__182C9B23")),CARRow())
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_CAR_MODEL")),CARRow())
             End If
         End Function
     End Class
@@ -2659,11 +2720,7 @@ Partial Public Class CarDealershipDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property client_id() As Integer
             Get
-                Try 
-                    Return CType(Me(Me.tableRECEIPT.client_idColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'client_id' in table 'RECEIPT' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableRECEIPT.client_idColumn),Integer)
             End Get
             Set
                 Me(Me.tableRECEIPT.client_idColumn) = value
@@ -2702,15 +2759,25 @@ Partial Public Class CarDealershipDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isclient_idNull() As Boolean
-            Return Me.IsNull(Me.tableRECEIPT.client_idColumn)
-        End Function
+        Public Property CARRow() As CARRow
+            Get
+                Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_RECEIPT_CAR")),CARRow)
+            End Get
+            Set
+                Me.SetParentRow(value, Me.Table.ParentRelations("FK_RECEIPT_CAR"))
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setclient_idNull()
-            Me(Me.tableRECEIPT.client_idColumn) = Global.System.Convert.DBNull
-        End Sub
+        Public Property ClientRow() As ClientRow
+            Get
+                Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_RECEIPT_Client")),ClientRow)
+            End Get
+            Set
+                Me.SetParentRow(value, Me.Table.ParentRelations("FK_RECEIPT_Client"))
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -2820,10 +2887,10 @@ Partial Public Class CarDealershipDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function GetCARRows() As CARRow()
-            If (Me.Table.ChildRelations("FK__CAR__supp_id__1920BF5C") Is Nothing) Then
+            If (Me.Table.ChildRelations("FK_CAR_SUPPLIER") Is Nothing) Then
                 Return New CARRow(-1) {}
             Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK__CAR__supp_id__1920BF5C")),CARRow())
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_CAR_SUPPLIER")),CARRow())
             End If
         End Function
     End Class
@@ -3222,21 +3289,17 @@ Namespace CarDealershipDataSetTableAdapters
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[CAR] WHERE (([car_id] = @Original_car_id) AND ((@IsNull_car_na"& _ 
-                "me = 1 AND [car_name] IS NULL) OR ([car_name] = @Original_car_name)) AND ((@IsNu"& _ 
-                "ll_model_id = 1 AND [model_id] IS NULL) OR ([model_id] = @Original_model_id)) AN"& _ 
-                "D ((@IsNull_car_year = 1 AND [car_year] IS NULL) OR ([car_year] = @Original_car_"& _ 
-                "year)) AND ((@IsNull_supp_id = 1 AND [supp_id] IS NULL) OR ([supp_id] = @Origina"& _ 
-                "l_supp_id)) AND ((@IsNull_price = 1 AND [price] IS NULL) OR ([price] = @Original"& _ 
-                "_price)))"
+                "me = 1 AND [car_name] IS NULL) OR ([car_name] = @Original_car_name)) AND ([model"& _ 
+                "_id] = @Original_model_id) AND ((@IsNull_car_year = 1 AND [car_year] IS NULL) OR"& _ 
+                " ([car_year] = @Original_car_year)) AND ([supp_id] = @Original_supp_id) AND ((@I"& _ 
+                "sNull_price = 1 AND [price] IS NULL) OR ([price] = @Original_price)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_car_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_car_name", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_name", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_car_name", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_model_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "model_id", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_model_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "model_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_car_year", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_year", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_car_year", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_year", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_supp_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "supp_id", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_supp_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "supp_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_price", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "price", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_price", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "price", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -3257,12 +3320,11 @@ Namespace CarDealershipDataSetTableAdapters
             Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[CAR] SET [car_name] = @car_name, [model_id] = @model_id, [car_year]"& _ 
                 " = @car_year, [supp_id] = @supp_id, [price] = @price WHERE (([car_id] = @Origina"& _ 
                 "l_car_id) AND ((@IsNull_car_name = 1 AND [car_name] IS NULL) OR ([car_name] = @O"& _ 
-                "riginal_car_name)) AND ((@IsNull_model_id = 1 AND [model_id] IS NULL) OR ([model"& _ 
-                "_id] = @Original_model_id)) AND ((@IsNull_car_year = 1 AND [car_year] IS NULL) O"& _ 
-                "R ([car_year] = @Original_car_year)) AND ((@IsNull_supp_id = 1 AND [supp_id] IS "& _ 
-                "NULL) OR ([supp_id] = @Original_supp_id)) AND ((@IsNull_price = 1 AND [price] IS"& _ 
-                " NULL) OR ([price] = @Original_price)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT car_id, car_name, model_id, car"& _ 
-                "_year, supp_id, price FROM CAR WHERE (car_id = @car_id)"
+                "riginal_car_name)) AND ([model_id] = @Original_model_id) AND ((@IsNull_car_year "& _ 
+                "= 1 AND [car_year] IS NULL) OR ([car_year] = @Original_car_year)) AND ([supp_id]"& _ 
+                " = @Original_supp_id) AND ((@IsNull_price = 1 AND [price] IS NULL) OR ([price] ="& _ 
+                " @Original_price)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT car_id, car_name, model_id, car_year, supp_id, pric"& _ 
+                "e FROM CAR WHERE (car_id = @car_id)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@car_name", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@model_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "model_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -3272,11 +3334,9 @@ Namespace CarDealershipDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_car_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_car_name", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_name", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_car_name", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_model_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "model_id", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_model_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "model_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_car_year", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_year", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_car_year", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_year", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_supp_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "supp_id", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_supp_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "supp_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_price", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "price", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_price", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "price", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -3356,7 +3416,7 @@ Namespace CarDealershipDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_car_id As Integer, ByVal Original_car_name As String, ByVal Original_model_id As Global.System.Nullable(Of Integer), ByVal Original_car_year As Global.System.Nullable(Of Integer), ByVal Original_supp_id As Global.System.Nullable(Of Integer), ByVal Original_price As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_car_id As Integer, ByVal Original_car_name As String, ByVal Original_model_id As Integer, ByVal Original_car_year As Global.System.Nullable(Of Integer), ByVal Original_supp_id As Integer, ByVal Original_price As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_car_id,Integer)
             If (Original_car_name Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -3365,33 +3425,21 @@ Namespace CarDealershipDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_car_name,String)
             End If
-            If (Original_model_id.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_model_id.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_model_id,Integer)
             If (Original_car_year.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_car_year.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_car_year.Value,Integer)
             Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (Original_supp_id.HasValue = true) Then
+            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_supp_id,Integer)
+            If (Original_price.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_supp_id.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_price.Value,Integer)
             Else
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (Original_price.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_price.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -3412,27 +3460,19 @@ Namespace CarDealershipDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal car_name As String, ByVal model_id As Global.System.Nullable(Of Integer), ByVal car_year As Global.System.Nullable(Of Integer), ByVal supp_id As Global.System.Nullable(Of Integer), ByVal price As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Insert(ByVal car_name As String, ByVal model_id As Integer, ByVal car_year As Global.System.Nullable(Of Integer), ByVal supp_id As Integer, ByVal price As Global.System.Nullable(Of Integer)) As Integer
             If (car_name Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(car_name,String)
             End If
-            If (model_id.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(model_id.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.InsertCommand.Parameters(1).Value = CType(model_id,Integer)
             If (car_year.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(2).Value = CType(car_year.Value,Integer)
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (supp_id.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(supp_id.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.InsertCommand.Parameters(3).Value = CType(supp_id,Integer)
             If (price.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(4).Value = CType(price.Value,Integer)
             Else
@@ -3457,27 +3497,19 @@ Namespace CarDealershipDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal car_name As String, ByVal model_id As Global.System.Nullable(Of Integer), ByVal car_year As Global.System.Nullable(Of Integer), ByVal supp_id As Global.System.Nullable(Of Integer), ByVal price As Global.System.Nullable(Of Integer), ByVal Original_car_id As Integer, ByVal Original_car_name As String, ByVal Original_model_id As Global.System.Nullable(Of Integer), ByVal Original_car_year As Global.System.Nullable(Of Integer), ByVal Original_supp_id As Global.System.Nullable(Of Integer), ByVal Original_price As Global.System.Nullable(Of Integer), ByVal car_id As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal car_name As String, ByVal model_id As Integer, ByVal car_year As Global.System.Nullable(Of Integer), ByVal supp_id As Integer, ByVal price As Global.System.Nullable(Of Integer), ByVal Original_car_id As Integer, ByVal Original_car_name As String, ByVal Original_model_id As Integer, ByVal Original_car_year As Global.System.Nullable(Of Integer), ByVal Original_supp_id As Integer, ByVal Original_price As Global.System.Nullable(Of Integer), ByVal car_id As Integer) As Integer
             If (car_name Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(car_name,String)
             End If
-            If (model_id.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(model_id.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.UpdateCommand.Parameters(1).Value = CType(model_id,Integer)
             If (car_year.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(2).Value = CType(car_year.Value,Integer)
             Else
                 Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (supp_id.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(supp_id.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(supp_id,Integer)
             If (price.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(4).Value = CType(price.Value,Integer)
             Else
@@ -3491,35 +3523,23 @@ Namespace CarDealershipDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(6).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_car_name,String)
             End If
-            If (Original_model_id.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_model_id.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_model_id,Integer)
             If (Original_car_year.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_car_year.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_car_year.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
             End If
-            If (Original_supp_id.HasValue = true) Then
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_supp_id,Integer)
+            If (Original_price.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_supp_id.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_price.Value,Integer)
             Else
                 Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
-            If (Original_price.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_price.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(car_id,Integer)
+            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(car_id,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -3539,7 +3559,7 @@ Namespace CarDealershipDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal car_name As String, ByVal model_id As Global.System.Nullable(Of Integer), ByVal car_year As Global.System.Nullable(Of Integer), ByVal supp_id As Global.System.Nullable(Of Integer), ByVal price As Global.System.Nullable(Of Integer), ByVal Original_car_id As Integer, ByVal Original_car_name As String, ByVal Original_model_id As Global.System.Nullable(Of Integer), ByVal Original_car_year As Global.System.Nullable(Of Integer), ByVal Original_supp_id As Global.System.Nullable(Of Integer), ByVal Original_price As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Update(ByVal car_name As String, ByVal model_id As Integer, ByVal car_year As Global.System.Nullable(Of Integer), ByVal supp_id As Integer, ByVal price As Global.System.Nullable(Of Integer), ByVal Original_car_id As Integer, ByVal Original_car_name As String, ByVal Original_model_id As Integer, ByVal Original_car_year As Global.System.Nullable(Of Integer), ByVal Original_supp_id As Integer, ByVal Original_price As Global.System.Nullable(Of Integer)) As Integer
             Return Me.Update(car_name, model_id, car_year, supp_id, price, Original_car_id, Original_car_name, Original_model_id, Original_car_year, Original_supp_id, Original_price, Original_car_id)
         End Function
     End Class
@@ -3672,22 +3692,79 @@ Namespace CarDealershipDataSetTableAdapters
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "Client"
             tableMapping.ColumnMappings.Add("Client_ID", "Client_ID")
+            tableMapping.ColumnMappings.Add("client_id_show", "client_id_show")
             tableMapping.ColumnMappings.Add("client_fname", "client_fname")
             tableMapping.ColumnMappings.Add("client_lname", "client_lname")
             tableMapping.ColumnMappings.Add("client_tel", "client_tel")
             tableMapping.ColumnMappings.Add("client_email", "client_email")
             Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Client] WHERE (([Client_ID] = @Original_Client_ID) AND ((@IsNu"& _ 
+                "ll_client_id_show = 1 AND [client_id_show] IS NULL) OR ([client_id_show] = @Orig"& _ 
+                "inal_client_id_show)) AND ((@IsNull_client_fname = 1 AND [client_fname] IS NULL)"& _ 
+                " OR ([client_fname] = @Original_client_fname)) AND ((@IsNull_client_lname = 1 AN"& _ 
+                "D [client_lname] IS NULL) OR ([client_lname] = @Original_client_lname)) AND ((@I"& _ 
+                "sNull_client_tel = 1 AND [client_tel] IS NULL) OR ([client_tel] = @Original_clie"& _ 
+                "nt_tel)) AND ((@IsNull_client_email = 1 AND [client_email] IS NULL) OR ([client_"& _ 
+                "email] = @Original_client_email)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Client_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Client_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_client_id_show", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_id_show", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_client_id_show", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_id_show", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_client_fname", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_fname", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_client_fname", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_fname", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_client_lname", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_lname", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_client_lname", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_lname", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_client_tel", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_tel", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_client_tel", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_tel", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_client_email", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_email", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_client_email", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_email", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Client] ([Client_ID], [client_fname], [client_lname], [client_"& _ 
-                "tel], [client_email]) VALUES (@Client_ID, @client_fname, @client_lname, @client_"& _ 
-                "tel, @client_email)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Client] ([client_id_show], [client_fname], [client_lname], [cl"& _ 
+                "ient_tel], [client_email]) VALUES (@client_id_show, @client_fname, @client_lname"& _ 
+                ", @client_tel, @client_email);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Client_ID, client_id_show, client_fname, "& _ 
+                "client_lname, client_tel, client_email FROM Client WHERE (Client_ID = SCOPE_IDEN"& _ 
+                "TITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Client_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Client_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@client_id_show", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_id_show", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@client_fname", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_fname", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@client_lname", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_lname", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@client_tel", Global.System.Data.SqlDbType.VarBinary, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_tel", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@client_tel", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_tel", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@client_email", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_email", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Client] SET [client_id_show] = @client_id_show, [client_fname] = @c"& _ 
+                "lient_fname, [client_lname] = @client_lname, [client_tel] = @client_tel, [client"& _ 
+                "_email] = @client_email WHERE (([Client_ID] = @Original_Client_ID) AND ((@IsNull"& _ 
+                "_client_id_show = 1 AND [client_id_show] IS NULL) OR ([client_id_show] = @Origin"& _ 
+                "al_client_id_show)) AND ((@IsNull_client_fname = 1 AND [client_fname] IS NULL) O"& _ 
+                "R ([client_fname] = @Original_client_fname)) AND ((@IsNull_client_lname = 1 AND "& _ 
+                "[client_lname] IS NULL) OR ([client_lname] = @Original_client_lname)) AND ((@IsN"& _ 
+                "ull_client_tel = 1 AND [client_tel] IS NULL) OR ([client_tel] = @Original_client"& _ 
+                "_tel)) AND ((@IsNull_client_email = 1 AND [client_email] IS NULL) OR ([client_em"& _ 
+                "ail] = @Original_client_email)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Client_ID, client_id_show, client_fnam"& _ 
+                "e, client_lname, client_tel, client_email FROM Client WHERE (Client_ID = @Client"& _ 
+                "_ID)"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@client_id_show", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_id_show", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@client_fname", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_fname", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@client_lname", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_lname", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@client_tel", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_tel", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@client_email", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_email", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Client_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Client_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_client_id_show", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_id_show", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_client_id_show", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_id_show", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_client_fname", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_fname", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_client_fname", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_fname", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_client_lname", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_lname", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_client_lname", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_lname", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_client_tel", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_tel", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_client_tel", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_tel", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_client_email", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_email", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_client_email", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_email", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Client_ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Client_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3703,8 +3780,8 @@ Namespace CarDealershipDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Client_ID, client_fname, client_lname, client_tel, client_email FROM dbo.C"& _ 
-                "lient"
+            Me._commandCollection(0).CommandText = "SELECT Client_ID, client_id_show, client_fname, client_lname, client_tel, client_"& _ 
+                "email FROM dbo.Client"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -3763,9 +3840,69 @@ Namespace CarDealershipDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_Client_ID As Integer, ByVal Original_client_id_show As String, ByVal Original_client_fname As String, ByVal Original_client_lname As String, ByVal Original_client_tel As String, ByVal Original_client_email As String) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Client_ID,Integer)
+            If (Original_client_id_show Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_client_id_show,String)
+            End If
+            If (Original_client_fname Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_client_fname,String)
+            End If
+            If (Original_client_lname Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_client_lname,String)
+            End If
+            If (Original_client_tel Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_client_tel,String)
+            End If
+            If (Original_client_email Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_client_email,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Client_ID As Integer, ByVal client_fname As String, ByVal client_lname As String, ByVal client_tel() As Byte, ByVal client_email As String) As Integer
-            Me.Adapter.InsertCommand.Parameters(0).Value = CType(Client_ID,Integer)
+        Public Overloads Overridable Function Insert(ByVal client_id_show As String, ByVal client_fname As String, ByVal client_lname As String, ByVal client_tel As String, ByVal client_email As String) As Integer
+            If (client_id_show Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(client_id_show,String)
+            End If
             If (client_fname Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
@@ -3779,7 +3916,7 @@ Namespace CarDealershipDataSetTableAdapters
             If (client_tel Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(client_tel,Byte())
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(client_tel,String)
             End If
             If (client_email Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
@@ -3799,6 +3936,96 @@ Namespace CarDealershipDataSetTableAdapters
                     Me.Adapter.InsertCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal client_id_show As String, ByVal client_fname As String, ByVal client_lname As String, ByVal client_tel As String, ByVal client_email As String, ByVal Original_Client_ID As Integer, ByVal Original_client_id_show As String, ByVal Original_client_fname As String, ByVal Original_client_lname As String, ByVal Original_client_tel As String, ByVal Original_client_email As String, ByVal Client_ID As Integer) As Integer
+            If (client_id_show Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(client_id_show,String)
+            End If
+            If (client_fname Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(client_fname,String)
+            End If
+            If (client_lname Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(client_lname,String)
+            End If
+            If (client_tel Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(client_tel,String)
+            End If
+            If (client_email Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(client_email,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_Client_ID,Integer)
+            If (Original_client_id_show Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_client_id_show,String)
+            End If
+            If (Original_client_fname Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_client_fname,String)
+            End If
+            If (Original_client_lname Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_client_lname,String)
+            End If
+            If (Original_client_tel Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_client_tel,String)
+            End If
+            If (Original_client_email Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_client_email,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Client_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal client_id_show As String, ByVal client_fname As String, ByVal client_lname As String, ByVal client_tel As String, ByVal client_email As String, ByVal Original_Client_ID As Integer, ByVal Original_client_id_show As String, ByVal Original_client_fname As String, ByVal Original_client_lname As String, ByVal Original_client_tel As String, ByVal Original_client_email As String) As Integer
+            Return Me.Update(client_id_show, client_fname, client_lname, client_tel, client_email, Original_Client_ID, Original_client_id_show, Original_client_fname, Original_client_lname, Original_client_tel, Original_client_email, Original_Client_ID)
         End Function
     End Class
     
@@ -4262,14 +4489,12 @@ Namespace CarDealershipDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[RECEIPT] WHERE (([receipt_id] = @Original_receipt_id) AND ((@I"& _ 
-                "sNull_client_id = 1 AND [client_id] IS NULL) OR ([client_id] = @Original_client_"& _ 
-                "id)) AND ((@IsNull_car_id = 1 AND [car_id] IS NULL) OR ([car_id] = @Original_car"& _ 
-                "_id)) AND ((@IsNull_price = 1 AND [price] IS NULL) OR ([price] = @Original_price"& _ 
-                ")))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[RECEIPT] WHERE (([receipt_id] = @Original_receipt_id) AND ([cl"& _ 
+                "ient_id] = @Original_client_id) AND ((@IsNull_car_id = 1 AND [car_id] IS NULL) O"& _ 
+                "R ([car_id] = @Original_car_id)) AND ((@IsNull_price = 1 AND [price] IS NULL) OR"& _ 
+                " ([price] = @Original_price)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_receipt_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "receipt_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_client_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_id", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_client_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_car_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_id", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_car_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -4289,18 +4514,16 @@ Namespace CarDealershipDataSetTableAdapters
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[RECEIPT] SET [receipt_id] = @receipt_id, [client_id] = @client_id, "& _ 
                 "[car_id] = @car_id, [price] = @price WHERE (([receipt_id] = @Original_receipt_id"& _ 
-                ") AND ((@IsNull_client_id = 1 AND [client_id] IS NULL) OR ([client_id] = @Origin"& _ 
-                "al_client_id)) AND ((@IsNull_car_id = 1 AND [car_id] IS NULL) OR ([car_id] = @Or"& _ 
-                "iginal_car_id)) AND ((@IsNull_price = 1 AND [price] IS NULL) OR ([price] = @Orig"& _ 
-                "inal_price)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT receipt_id, client_id, car_id, price FROM RECEIPT WHERE ("& _ 
-                "receipt_id = @receipt_id)"
+                ") AND ([client_id] = @Original_client_id) AND ((@IsNull_car_id = 1 AND [car_id] "& _ 
+                "IS NULL) OR ([car_id] = @Original_car_id)) AND ((@IsNull_price = 1 AND [price] I"& _ 
+                "S NULL) OR ([price] = @Original_price)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT receipt_id, client_id, car_id,"& _ 
+                " price FROM RECEIPT WHERE (receipt_id = @receipt_id)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@receipt_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "receipt_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@client_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@car_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@price", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "price", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_receipt_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "receipt_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_client_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_id", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_client_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "client_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_car_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_id", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_car_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "car_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -4381,28 +4604,22 @@ Namespace CarDealershipDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_receipt_id As Integer, ByVal Original_client_id As Global.System.Nullable(Of Integer), ByVal Original_car_id As Global.System.Nullable(Of Integer), ByVal Original_price As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_receipt_id As Integer, ByVal Original_client_id As Integer, ByVal Original_car_id As Global.System.Nullable(Of Integer), ByVal Original_price As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_receipt_id,Integer)
-            If (Original_client_id.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_client_id.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_client_id,Integer)
             If (Original_car_id.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_car_id.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_car_id.Value,Integer)
             Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
             If (Original_price.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_price.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_price.Value,Integer)
             Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -4423,13 +4640,9 @@ Namespace CarDealershipDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal receipt_id As Integer, ByVal client_id As Global.System.Nullable(Of Integer), ByVal car_id As Global.System.Nullable(Of Integer), ByVal price As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Insert(ByVal receipt_id As Integer, ByVal client_id As Integer, ByVal car_id As Global.System.Nullable(Of Integer), ByVal price As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(receipt_id,Integer)
-            If (client_id.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(client_id.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.InsertCommand.Parameters(1).Value = CType(client_id,Integer)
             If (car_id.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(2).Value = CType(car_id.Value,Integer)
             Else
@@ -4459,13 +4672,9 @@ Namespace CarDealershipDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal receipt_id As Integer, ByVal client_id As Global.System.Nullable(Of Integer), ByVal car_id As Global.System.Nullable(Of Integer), ByVal price As Global.System.Nullable(Of Integer), ByVal Original_receipt_id As Integer, ByVal Original_client_id As Global.System.Nullable(Of Integer), ByVal Original_car_id As Global.System.Nullable(Of Integer), ByVal Original_price As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Update(ByVal receipt_id As Integer, ByVal client_id As Integer, ByVal car_id As Global.System.Nullable(Of Integer), ByVal price As Global.System.Nullable(Of Integer), ByVal Original_receipt_id As Integer, ByVal Original_client_id As Integer, ByVal Original_car_id As Global.System.Nullable(Of Integer), ByVal Original_price As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.UpdateCommand.Parameters(0).Value = CType(receipt_id,Integer)
-            If (client_id.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(client_id.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.UpdateCommand.Parameters(1).Value = CType(client_id,Integer)
             If (car_id.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(2).Value = CType(car_id.Value,Integer)
             Else
@@ -4477,26 +4686,20 @@ Namespace CarDealershipDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
             Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_receipt_id,Integer)
-            If (Original_client_id.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_client_id.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_client_id,Integer)
             If (Original_car_id.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_car_id.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_car_id.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
             If (Original_price.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_price.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_price.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -4517,7 +4720,7 @@ Namespace CarDealershipDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal client_id As Global.System.Nullable(Of Integer), ByVal car_id As Global.System.Nullable(Of Integer), ByVal price As Global.System.Nullable(Of Integer), ByVal Original_receipt_id As Integer, ByVal Original_client_id As Global.System.Nullable(Of Integer), ByVal Original_car_id As Global.System.Nullable(Of Integer), ByVal Original_price As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Update(ByVal client_id As Integer, ByVal car_id As Global.System.Nullable(Of Integer), ByVal price As Global.System.Nullable(Of Integer), ByVal Original_receipt_id As Integer, ByVal Original_client_id As Integer, ByVal Original_car_id As Global.System.Nullable(Of Integer), ByVal Original_price As Global.System.Nullable(Of Integer)) As Integer
             Return Me.Update(Original_receipt_id, client_id, car_id, price, Original_receipt_id, Original_client_id, Original_car_id, Original_price)
         End Function
     End Class
