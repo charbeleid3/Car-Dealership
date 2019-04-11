@@ -1,0 +1,156 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ghabachmotors
+</name>
+</assembly>
+<members>
+<member name="P:ghabach_motors.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:ghabach_motors.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:ghabach_motors.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.CARDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.ClientDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.MODELDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.RECEIPTDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.SUPPLIERDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.usersDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.CARRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.ClientRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.MODELRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.RECEIPTRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.SUPPLIERRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.usersRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.CARRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.ClientRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.MODELRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.RECEIPTRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.SUPPLIERRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet.usersRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSetTableAdapters.CARTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSetTableAdapters.ClientTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSetTableAdapters.MODELTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSetTableAdapters.RECEIPTTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSetTableAdapters.SUPPLIERTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSetTableAdapters.usersTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:ghabach_motors.CarDealershipDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(ghabach_motors.CarDealershipDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:ghabach_motors.CarDealershipDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(ghabach_motors.CarDealershipDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:ghabach_motors.CarDealershipDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(ghabach_motors.CarDealershipDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:ghabach_motors.CarDealershipDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:ghabach_motors.CarDealershipDataSetTableAdapters.TableAdapterManager.UpdateAll(ghabach_motors.CarDealershipDataSet)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:ghabach_motors.CarDealershipDataSetTableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+</members>
+</doc>

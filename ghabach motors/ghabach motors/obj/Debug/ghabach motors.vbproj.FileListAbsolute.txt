@@ -1,0 +1,14 @@
+c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motors\bin\Debug\ghabach motors.exe.config
+c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motors\bin\Debug\ghabach motors.exe
+c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motors\bin\Debug\ghabach motors.pdb
+c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motors\bin\Debug\ghabach motors.xml
+c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.Form1.resources
+c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motors\obj\Debug\ghabach_motors.Resources.resources
+c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motors\obj\Debug\ghabach motors.vbproj.GenerateResource.Cache
+c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motors\obj\Debug\ghabach motors.exe
+c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motors\obj\Debug\ghabach motors.xml
+c:\users\sakr\documents\visual studio 2013\Projects\ghabach motors\ghabach motors\obj\Debug\ghabach motors.pdb
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\bin\Debug\ghabach motors.exe.config
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach motors.exe
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach motors.xml
+C:\Users\Sakr\Desktop\git project\ghabach motors\ghabach motors\obj\Debug\ghabach motors.pdb
